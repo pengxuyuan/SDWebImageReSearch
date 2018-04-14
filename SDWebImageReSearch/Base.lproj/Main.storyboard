@@ -18,10 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Bc-p2-deP">
-                                <rect key="frame" x="0.0" y="103" width="130" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Bc-p2-deP">
+                                <rect key="frame" x="0.0" y="104" width="130" height="42"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="7PM-aV-kbV"/>
+                                    <constraint firstAttribute="width" constant="130" id="ucV-YD-WZj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="跳转TableView">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -30,10 +33,13 @@
                                     <action selector="jumpTableViewPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="arv-1p-x2S"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpn-1x-j2V">
-                                <rect key="frame" x="0.0" y="153" width="130" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpn-1x-j2V">
+                                <rect key="frame" x="0.0" y="151" width="130" height="42"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="9ec-NK-p1K"/>
+                                    <constraint firstAttribute="height" constant="42" id="ltD-y3-pYr"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="清除内存">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,10 +48,13 @@
                                     <action selector="clearMemoryCache:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EPl-tJ-5Uw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXC-XN-h2a">
-                                <rect key="frame" x="0.0" y="203" width="130" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXC-XN-h2a">
+                                <rect key="frame" x="0.0" y="198" width="130" height="42"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="OCv-ks-vsm"/>
+                                    <constraint firstAttribute="width" constant="130" id="u4y-TS-NZX"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="清除磁盘缓存">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -54,10 +63,13 @@
                                     <action selector="clearDiskCache:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sfa-JZ-k8D"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tmj-0H-DLT">
-                                <rect key="frame" x="0.0" y="253" width="130" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tmj-0H-DLT">
+                                <rect key="frame" x="0.0" y="245" width="130" height="42"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="baP-na-Vgs"/>
+                                    <constraint firstAttribute="width" constant="130" id="kUU-Wd-AXw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="清除所有缓存">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -66,34 +78,67 @@
                                     <action selector="clearAllCache:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FdV-uz-T1A"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRQ-Om-sfM">
-                                <rect key="frame" x="0.0" y="303" width="130" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRQ-Om-sfM">
+                                <rect key="frame" x="0.0" y="307" width="130" height="42"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="AUZ-MZ-eak"/>
+                                    <constraint firstAttribute="width" constant="130" id="t7Z-0p-a5b"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="未定义">
+                                <state key="normal" title="渐进式加载图片">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="imageRelate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WJd-Tg-IFk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdG-Sf-j7s">
+                                <rect key="frame" x="0.0" y="354" width="130" height="42"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="4SK-Jj-rGW"/>
+                                    <constraint firstAttribute="height" constant="42" id="S85-8C-tBB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="缩略图片">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdG-Sf-j7s">
-                                <rect key="frame" x="0.0" y="353" width="130" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="未定义">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uS0-so-9GW">
-                                <rect key="frame" x="38" y="439" width="250" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qhP-fi-Dtu">
+                                <rect key="frame" x="133" y="104" width="240" height="154"/>
+                                <color key="backgroundColor" red="0.98923546080000002" green="0.46187424659999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="154" id="3R3-k0-VPx"/>
+                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qhP-fi-Dtu">
-                                <rect key="frame" x="133" y="103" width="240" height="154"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uS0-so-9GW">
+                                <rect key="frame" x="133" y="263" width="240" height="154"/>
+                                <color key="backgroundColor" red="0.98923546080000002" green="0.46187424659999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qhP-fi-Dtu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="0Az-OL-cB8"/>
+                            <constraint firstItem="JdG-Sf-j7s" firstAttribute="top" secondItem="gRQ-Om-sfM" secondAttribute="bottom" constant="5" id="1Wf-JR-ILq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qhP-fi-Dtu" secondAttribute="trailing" constant="2" id="GRp-5h-gsz"/>
+                            <constraint firstItem="gRQ-Om-sfM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Glf-uZ-z70"/>
+                            <constraint firstItem="gRQ-Om-sfM" firstAttribute="top" secondItem="Tmj-0H-DLT" secondAttribute="bottom" constant="20" id="HGq-p0-CPe"/>
+                            <constraint firstItem="Tmj-0H-DLT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VXh-mM-7wB"/>
+                            <constraint firstItem="uS0-so-9GW" firstAttribute="height" secondItem="qhP-fi-Dtu" secondAttribute="height" id="WiV-ei-00C"/>
+                            <constraint firstItem="5Bc-p2-deP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Z5w-R1-Emm"/>
+                            <constraint firstItem="Dpn-1x-j2V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eO7-7N-Oqt"/>
+                            <constraint firstItem="JdG-Sf-j7s" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="edP-Ej-kGI"/>
+                            <constraint firstItem="Dpn-1x-j2V" firstAttribute="top" secondItem="5Bc-p2-deP" secondAttribute="bottom" constant="5" id="m28-Bn-dwb"/>
+                            <constraint firstItem="JXC-XN-h2a" firstAttribute="top" secondItem="Dpn-1x-j2V" secondAttribute="bottom" constant="5" id="mY9-2t-SfQ"/>
+                            <constraint firstItem="uS0-so-9GW" firstAttribute="top" secondItem="qhP-fi-Dtu" secondAttribute="bottom" constant="5" id="rfe-rm-BFY"/>
+                            <constraint firstItem="5Bc-p2-deP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uDh-xY-1Kl"/>
+                            <constraint firstItem="Tmj-0H-DLT" firstAttribute="top" secondItem="JXC-XN-h2a" secondAttribute="bottom" constant="5" id="uLA-k4-nc8"/>
+                            <constraint firstItem="qhP-fi-Dtu" firstAttribute="leading" secondItem="5Bc-p2-deP" secondAttribute="trailing" constant="3" id="vPP-gZ-BtZ"/>
+                            <constraint firstItem="uS0-so-9GW" firstAttribute="width" secondItem="qhP-fi-Dtu" secondAttribute="width" id="xIb-tP-rkF"/>
+                            <constraint firstItem="uS0-so-9GW" firstAttribute="centerX" secondItem="qhP-fi-Dtu" secondAttribute="centerX" id="xiz-oq-Vtz"/>
+                            <constraint firstItem="JXC-XN-h2a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zKa-30-J5P"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="oE6-iO-XsU"/>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageRelateViewController">
+            <connections>
+                <outlet property="imageView" destination="fmE-bQ-0ie" id="Lj6-TT-W6m"/>
+                <outlet property="segmentedControl1" destination="Cgk-NZ-ZWv" id="XUS-AU-M2q"/>
+                <outlet property="segmentedControl2" destination="XUX-FR-GLB" id="wy6-Rj-4P5"/>
+                <outlet property="slider" destination="SQY-VK-uHF" id="7xe-cm-dZb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fmE-bQ-0ie">
+                    <rect key="frame" x="22" y="74" width="330" height="330"/>
+                    <color key="backgroundColor" red="0.98923546080000002" green="0.46187424659999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="fmE-bQ-0ie" secondAttribute="height" multiplier="1:1" id="x0v-2I-mG3"/>
+                    </constraints>
+                </imageView>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Cgk-NZ-ZWv">
+                    <rect key="frame" x="22" y="434" width="331" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="N3i-AG-bOh"/>
+                    </constraints>
+                    <segments>
+                        <segment title="JPEG"/>
+                        <segment title="PNG"/>
+                        <segment title="GIF"/>
+                    </segments>
+                </segmentedControl>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XUX-FR-GLB">
+                    <rect key="frame" x="22" y="484" width="331" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="d1d-bC-OlC"/>
+                    </constraints>
+                    <segments>
+                        <segment title="Baseline"/>
+                        <segment title="Interlaced"/>
+                        <segment title="Progressive"/>
+                    </segments>
+                </segmentedControl>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SQY-VK-uHF">
+                    <rect key="frame" x="20" y="534" width="335" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="U8l-qe-5Kb"/>
+                    </constraints>
+                </slider>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="XUX-FR-GLB" secondAttribute="trailing" constant="22" id="16i-9T-4cV"/>
+                <constraint firstItem="Cgk-NZ-ZWv" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="22" id="37V-8O-Yt2"/>
+                <constraint firstItem="SQY-VK-uHF" firstAttribute="top" secondItem="XUX-FR-GLB" secondAttribute="bottom" constant="10" id="56q-QC-B6R"/>
+                <constraint firstItem="SQY-VK-uHF" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="22" id="LfM-bI-7Dd"/>
+                <constraint firstItem="fmE-bQ-0ie" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="22" id="NMc-R7-kZa"/>
+                <constraint firstItem="XUX-FR-GLB" firstAttribute="top" secondItem="Cgk-NZ-ZWv" secondAttribute="bottom" constant="10" id="RiX-bm-mfr"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="SQY-VK-uHF" secondAttribute="trailing" constant="22" id="Sia-an-GWm"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="fmE-bQ-0ie" secondAttribute="trailing" constant="23" id="TYk-wh-Nxe"/>
+                <constraint firstItem="fmE-bQ-0ie" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="30" id="X2h-db-u8U"/>
+                <constraint firstItem="Cgk-NZ-ZWv" firstAttribute="top" secondItem="fmE-bQ-0ie" secondAttribute="bottom" constant="30" id="bm0-lc-rmU"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Cgk-NZ-ZWv" secondAttribute="trailing" constant="22" id="dd6-7r-qGZ"/>
+                <constraint firstItem="XUX-FR-GLB" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="22" id="rei-Ai-Qu3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="-156.5" y="17"/>
+        </view>
+    </objects>
+</document>
