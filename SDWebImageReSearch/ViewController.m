@@ -16,6 +16,7 @@
 #import "GenericsModel.h"
 #import "ImageRelateViewController.h"
 #import "ImageProcessHelper.h"
+#import "ImagePropertiesListController.h"
 
 /*
  1.NSData 几种换取方式有差别，有些把图片的信息删除了
@@ -50,9 +51,14 @@
     [super viewDidLoad];
     self.imageView.image = PXYCreateUIImageFromFileName(@"timg5.gif");
     self.imageView2.image = PXYCreateUIImageFromFileName(@"HomeActivity1@2x.png");
+    
+    PXYFetchImagePropertiesWithImageName(@"HomeActivity1@2x.png");
+    PXYFetchImagePropertiesWithImageName(@"timg5.gif");
+    
+    
 //    self.imageView2.image = PXYFetchThumbnailImageFromFileName(@"HomeActivity1@2x.png", 20);
     
-//    UIImage *image1 = PXYCreateUIImageFromFileName(@"HomeActivity1@2x.png");
+//    UIImage *image0 = PXYCreateUIImageFromFileName(@"HomeActivity1@2x.png");
 //    UIImage *image1 = PXYFetchThumbnailImageFromFileName(@"HomeActivity1@2x.png", 0.1);
 //    UIImage *image2 = PXYFetchThumbnailImageFromFileName(@"HomeActivity1@2x.png", 10);
 //    UIImage *image3 = PXYFetchThumbnailImageFromFileName(@"HomeActivity1@2x.png", 100);
@@ -115,6 +121,10 @@
 - (IBAction)imageRelate:(id)sender {
     ImageRelateViewController *imageRelate = [ImageRelateViewController new];
     [self.navigationController pushViewController:imageRelate animated:YES];
+}
+- (IBAction)imagePropertiesPage:(id)sender {
+    ImagePropertiesListController *imageProperty = [ImagePropertiesListController new];
+    [self.navigationController pushViewController:imageProperty animated:YES];
 }
 
 //    NSUInteger fileSize = [imageProperties[(__bridge NSString *)kCGImagePropertyFileSize] integerValue];

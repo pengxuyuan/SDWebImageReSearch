@@ -101,9 +101,12 @@
                                     <constraint firstAttribute="height" constant="42" id="S85-8C-tBB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="缩略图片">
+                                <state key="normal" title="图片属性">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="imagePropertiesPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x3a-kq-PhX"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qhP-fi-Dtu">
                                 <rect key="frame" x="133" y="104" width="240" height="154"/>

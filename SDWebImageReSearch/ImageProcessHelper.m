@@ -8,8 +8,9 @@
 
 #import "ImageProcessHelper.h"
 
-//苹果官方代码
-//利用一个图片路径来创建一张 CGImage
+/**
+ 解压本地图片
+ */
 UIImage* PXYCreateUIImageFromFileName (NSString *fileName) {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@""];
     NSURL *url = [NSURL fileURLWithPath:filePath];
@@ -40,8 +41,8 @@ UIImage* PXYCreateUIImageFromFileName (NSString *fileName) {
         return nil;
     }
     
-    NSUInteger frameCount = CGImageSourceGetCount(imageSourceRef);
-    NSString *imageType = (__bridge NSString *)CGImageSourceGetType(imageSourceRef);
+    size_t frameCount = CGImageSourceGetCount(imageSourceRef);
+//    NSString *imageType = (__bridge NSString *)CGImageSourceGetType(imageSourceRef);
 //    NSLog(@"imageType: %@",imageType);
 //    NSLog(@"图片帧数：%lu",(unsigned long)frameCount);
     NSMutableArray <UIImage *> *images = [NSMutableArray array];
@@ -51,7 +52,7 @@ UIImage* PXYCreateUIImageFromFileName (NSString *fileName) {
             NSDictionary *frameProperties = (__bridge NSDictionary *) CGImageSourceCopyPropertiesAtIndex(imageSourceRef, i, NULL);
             NSDictionary *gifProperties = frameProperties[(NSString *)kCGImagePropertyGIFDictionary]; // GIF属性字典
             double duration = [gifProperties[(NSString *)kCGImagePropertyGIFUnclampedDelayTime] doubleValue]; // GIF原始的帧持续时长，秒数
-            NSLog(@"duration: %f",duration);
+//            NSLog(@"duration: %f",duration);
             CGImagePropertyOrientation exifOrientation = (CGImagePropertyOrientation)[frameProperties[(__bridge NSString *)kCGImagePropertyOrientation] integerValue]; // 方向
             CGImageRef imageRef = CGImageSourceCreateImageAtIndex(imageSourceRef, i, NULL); // CGImage
             UIImageOrientation imageOrientation = PXYImageOrientationFromExifOrientation(exifOrientation);
@@ -70,7 +71,9 @@ UIImage* PXYCreateUIImageFromFileName (NSString *fileName) {
     return image;
 }
 
-//创建一张缩略图
+/**
+ 生成一张缩略图
+ */
 UIImage* PXYFetchThumbnailImageFromFileName (NSString *fileName, int imageSize) {
     CGImageSourceRef imageSourceRef;
     CGImageRef myThumbnailImage = NULL;
@@ -94,7 +97,9 @@ UIImage* PXYFetchThumbnailImageFromFileName (NSString *fileName, int imageSize) 
     myKeys[0] = kCGImageSourceCreateThumbnailWithTransform;
     myValues[0] = (CFTypeRef)kCFBooleanTrue;
     
-    myKeys[1] = kCGImageSourceCreateThumbnailFromImageIfAbsent;
+//    kCGImageSourceCreateThumbnailFromImageIfAbsent
+//    kCGImageSourceCreateThumbnailFromImageAlways
+    myKeys[1] = kCGImageSourceCreateThumbnailFromImageAlways;
     myValues[1] = (CFTypeRef)kCFBooleanTrue;
     
     myKeys[2] = kCGImageSourceThumbnailMaxPixelSize;
@@ -120,8 +125,10 @@ UIImage* PXYFetchThumbnailImageFromFileName (NSString *fileName, int imageSize) 
     return [UIImage imageWithCGImage:myThumbnailImage];
 }
 
-//渐进式图片
-UIImage * PXYIncrementallyImageWithImageData (NSData *imageData, BOOL finalized) {
+/**
+ 利用 ImageData 创建渐进式图片
+ */
+UIImage* PXYIncrementallyImageWithImageData (NSData *imageData, BOOL finalized) {
     CFDataRef dataRef = (__bridge CFDataRef)imageData;
     CGImageSourceRef imageSource = CGImageSourceCreateIncremental(NULL);
     
@@ -135,7 +142,73 @@ UIImage * PXYIncrementallyImageWithImageData (NSData *imageData, BOOL finalized)
     return image;
 }
 
+// This routine is provided so that the panel can dynamically
+// support all the file formats supported by ImageIO.
+//
 
+static NSString* ImageIOLocalizedString (NSString* key)
+{
+    static NSBundle* b = nil;
+    
+    if (b==nil)
+        b = [NSBundle bundleWithIdentifier:@"com.apple.ImageIO.framework"];
+    
+    return [b localizedStringForKey:key value:key table: @"CGImageSource"];
+}
+
+
+NSArray* PropTree (NSDictionary *dict) {
+    NSMutableArray *tree = [NSMutableArray array];
+    unsigned int i, count = (unsigned int)[dict count];
+    
+    for (i = 0; i < count; i ++) {
+        NSArray *keys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
+        NSString *key = [keys objectAtIndex:i];
+        NSString *locKey = ImageIOLocalizedString(key);
+        id obj = [dict objectForKey:locKey];
+        
+        NSDictionary *leaf = nil;
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            leaf = [NSDictionary dictionaryWithObjectsAndKeys:locKey,@"key",
+                                                                @"",@"val",
+                                                                PropTree(obj),@"children",
+                                                                nil];
+        }else{
+            leaf = [NSDictionary dictionaryWithObjectsAndKeys:locKey,@"key",
+                                                                obj,@"val",
+                                                                nil];
+        }
+        [tree addObject:leaf];
+    }
+    
+    
+    return tree;
+}
+
+
+
+NSDictionary* PXYFetchImagePropertiesWithImageName (NSString *fileName) {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@""];
+    NSURL *url = [NSURL fileURLWithPath:filePath];
+    
+    CGImageSourceRef imageSourceRef = CGImageSourceCreateWithURL((__bridge CFURLRef)url, NULL);
+    if (imageSourceRef == NULL) {
+        fprintf(stderr, "图片资源没找到");
+        return nil;
+    }
+    
+    NSDictionary *propertiesDict = (__bridge NSDictionary *)CGImageSourceCopyPropertiesAtIndex(imageSourceRef, 0, NULL);
+    NSArray *propertiesArray = PropTree(propertiesDict);
+    
+    
+    
+    return propertiesDict;
+}
+
+#pragma mark - Private Methods
+/**
+ 利用 Core Foundation 框架绘制图片
+ */
 UIImage* PXYFetchRenderImageWithOriginImage (UIImage *image){
     UIImageView *tempImageView = [[UIImageView alloc] initWithImage:image];
     //1. 开启上下文
@@ -157,6 +230,9 @@ UIImage* PXYFetchRenderImageWithOriginImage (UIImage *image){
     return newImage;
 }
 
+/**
+ 将 CGImagePropertyOrientation 转换成 UIImageOrientation
+ */
 UIImageOrientation PXYImageOrientationFromExifOrientation (CGImagePropertyOrientation exifOrientation){
     switch (exifOrientation) {
         case kCGImagePropertyOrientationUp:

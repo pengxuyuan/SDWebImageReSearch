@@ -15,5 +15,6 @@ FOUNDATION_EXPORT UIImage* PXYFetchRenderImageWithOriginImage (UIImage *image);
 FOUNDATION_EXPORT UIImage* PXYFetchThumbnailImageFromFileName (NSString *fileName, int imageSize);
 FOUNDATION_EXPORT UIImage* PXYCreateUIImageFromFileName (NSString *fileName);
 FOUNDATION_EXPORT UIImage * PXYIncrementallyImageWithImageData (NSData *imageData, BOOL finalized);
-
+FOUNDATION_EXPORT NSDictionary* PXYFetchImagePropertiesWithImageName (NSString *fileName);
+FOUNDATION_EXPORT NSArray* PropTree (NSDictionary *dict);
 

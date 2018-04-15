@@ -51,6 +51,7 @@
 		E64CCF0F2080AFE400392B0A /* mew_interlaced.png in Resources */ = {isa = PBXBuildFile; fileRef = E64CCF092080AFE300392B0A /* mew_interlaced.png */; };
 		E64CCF102080AFE400392B0A /* mew_progressive.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E64CCF0A2080AFE300392B0A /* mew_progressive.jpg */; };
 		E64CCF112080AFE400392B0A /* mew_baseline.png in Resources */ = {isa = PBXBuildFile; fileRef = E64CCF0B2080AFE400392B0A /* mew_baseline.png */; };
+		E64CCF142081EFED00392B0A /* ImagePropertiesListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64CCF132081EFED00392B0A /* ImagePropertiesListController.m */; };
 		E64CE6922071FB050074EFB5 /* CodeSnippetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64CE6912071FB050074EFB5 /* CodeSnippetsViewController.m */; };
 		E656F46B205FF1EF00216A23 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F46A205FF1EF00216A23 /* ListViewController.m */; };
 		E656F46F205FF45B00216A23 /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F46D205FF45B00216A23 /* ListTableViewCell.m */; };
@@ -123,6 +124,8 @@
 		E64CCF092080AFE300392B0A /* mew_interlaced.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mew_interlaced.png; sourceTree = "<group>"; };
 		E64CCF0A2080AFE300392B0A /* mew_progressive.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mew_progressive.jpg; sourceTree = "<group>"; };
 		E64CCF0B2080AFE400392B0A /* mew_baseline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mew_baseline.png; sourceTree = "<group>"; };
+		E64CCF122081EFED00392B0A /* ImagePropertiesListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImagePropertiesListController.h; sourceTree = "<group>"; };
+		E64CCF132081EFED00392B0A /* ImagePropertiesListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImagePropertiesListController.m; sourceTree = "<group>"; };
 		E64CE6902071FB050074EFB5 /* CodeSnippetsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeSnippetsViewController.h; sourceTree = "<group>"; };
 		E64CE6912071FB050074EFB5 /* CodeSnippetsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodeSnippetsViewController.m; sourceTree = "<group>"; };
 		E656F469205FF1EF00216A23 /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 				E64CCEFD20805A7100392B0A /* ImageRelateViewController.h */,
 				E64CCEFE20805A7100392B0A /* ImageRelateViewController.m */,
 				E64CCEFF20805A7100392B0A /* ImageRelateViewController.xib */,
+				E64CCF122081EFED00392B0A /* ImagePropertiesListController.h */,
+				E64CCF132081EFED00392B0A /* ImagePropertiesListController.m */,
 				E623A74F207C91F80047FFC5 /* UIImage+WCImage.h */,
 				E623A74E207C91F80047FFC5 /* UIImage+WCImage.m */,
 				E656F469205FF1EF00216A23 /* ListViewController.h */,
@@ -400,6 +405,7 @@
 				E656F46F205FF45B00216A23 /* ListTableViewCell.m in Sources */,
 				E63286B8205A0C76003BD43F /* PXYSingleClassTest.m in Sources */,
 				E631AE2620443E0500E586A1 /* main.m in Sources */,
+				E64CCF142081EFED00392B0A /* ImagePropertiesListController.m in Sources */,
 				E64CCF0020805A7100392B0A /* ImageRelateViewController.m in Sources */,
 				E631AE1820443E0500E586A1 /* AppDelegate.m in Sources */,
 				E64CCEF8207F9A9E00392B0A /* NSMutableDictionary+PXYExtension.m in Sources */,
