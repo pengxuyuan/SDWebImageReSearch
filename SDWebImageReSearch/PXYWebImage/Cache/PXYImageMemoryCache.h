@@ -21,15 +21,30 @@
  
  */
 
+@protocol PXYImageMemoryCacheEliminatedDelegate <NSObject>
+@optional
+- (void)imageMemoryCacheSetObject:(id)obj forKey:(id)key;
+- (void)imageMemoryCacheObjectForKey:(id)key fetchValue:(id)value;
+- (void)imageMemoryCacheRemoveObjectForKey:(id)key;
+- (void)imageMemoryCacheRemoveAllObject;
+
+- (id)imageMemoryCacheShouldRemoveCache;
+
+@end
+
 @interface PXYImageMemoryCache <KeyType, ObjectType> : NSCache <KeyType, ObjectType>
 
 + (instancetype)shareInstance;
+
+@property (nonatomic, weak) id<PXYImageMemoryCacheEliminatedDelegate> eliminatedDelegate;
 
 - (NSArray <KeyType>*)fetchAllCacheKeys;
 
 - (NSArray <ObjectType>*)fetchAllCacheValues;
 
 - (NSDictionary <KeyType, ObjectType>*)fetchAllKeyValues;
+
+
 
 
 @end

@@ -18,6 +18,12 @@
 #import "ImageProcessHelper.h"
 #import "ImagePropertiesListController.h"
 
+#import "PXYImageMemoryCache.h"
+#import "NSCache+PXYExtension.h"
+#import "LRUImplement.h"
+#import "LRUDoubleLinkedList.h"
+#import "PXYImageMemoryCacheEliminatedRule.h"
+
 /*
  1.NSData 几种换取方式有差别，有些把图片的信息删除了
  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"HomeActivity1@2x.png" ofType:@""];
@@ -116,8 +122,62 @@
     [[PXYImageCacheManager shareInstance] clearDiskCacheImage];
 }
 - (IBAction)clearAllCache:(id)sender {
-    [[PXYImageCacheManager shareInstance] clearAllCacheImage];
+//    [[PXYImageCacheManager shareInstance] clearAllCacheImage];
+//    1 -1 -1 3 4
+//    LRUDoubleLinkedList *cache = [[LRUDoubleLinkedList alloc] initCacheWithCapacity:2];
+//    [cache putWithKey:@"1" value:@"1"];
+//    [cache putWithKey:@"2" value:@"2"];
+//    NSLog(@"--:%@",[cache getWithKey:@"1"]);
+//    [cache putWithKey:@"3" value:@"3"];
+//    NSLog(@"--:%@",[cache getWithKey:@"2"]);
+//    [cache putWithKey:@"4" value:@"4"];
+//    NSLog(@"--:%@",[cache getWithKey:@"1"]);
+//    NSLog(@"--:%@",[cache getWithKey:@"3"]);
+//    NSLog(@"--:%@",[cache getWithKey:@"4"]);
+//    NSLog(@"=======");
+//
+//    //-1 -1 2 6
+//    LRUDoubleLinkedList *cache1 = [[LRUDoubleLinkedList alloc] initCacheWithCapacity:2];
+//    NSLog(@"--:%@",[cache1 getWithKey:@"2"]);
+//    [cache1 putWithKey:@"2" value:@"6"];
+//    NSLog(@"--:%@",[cache1 getWithKey:@"1"]);
+//    [cache1 putWithKey:@"1" value:@"5"];
+//    [cache1 putWithKey:@"1" value:@"2"];
+//    NSLog(@"--:%@",[cache1 getWithKey:@"1"]);
+//    NSLog(@"--:%@",[cache1 getWithKey:@"2"]);
+//
+//    NSLog(@"=======");
+//    //1
+//    LRUDoubleLinkedList *cache2 = [[LRUDoubleLinkedList alloc] initCacheWithCapacity:1];
+//    [cache2 putWithKey:@"2" value:@"1"];
+//    [cache2 putWithKey:@"1" value:@"2"];
+//    [cache2 putWithKey:@"1" value:@"2"];
+//    [cache2 putWithKey:@"3" value:@"3"];
+//    NSLog(@"--:%@",[cache2 getWithKey:@"2"]);
+    
+    
+//    [PXYImageMemoryCacheEliminatedRule shareInstanceWithCapacity:2];
+////    1 -1 -1 3 4
+//    [[PXYImageMemoryCache shareInstance] setObject:@"1" forKey:@"1"];
+//    [[PXYImageMemoryCache shareInstance] setObject:@"2" forKey:@"2"];
+//    NSLog(@"===%@",[[PXYImageMemoryCache shareInstance] objectForKey:@"1"]);
+//    [[PXYImageMemoryCache shareInstance] setObject:@"3" forKey:@"3"];
+//    NSLog(@"===%@",[[PXYImageMemoryCache shareInstance] objectForKey:@"2"]);
+//    [[PXYImageMemoryCache shareInstance] setObject:@"4" forKey:@"4"];
+//    NSLog(@"===%@",[[PXYImageMemoryCache shareInstance] objectForKey:@"1"]);
+//    NSLog(@"===%@",[[PXYImageMemoryCache shareInstance] objectForKey:@"3"]);
+//    NSLog(@"===%@",[[PXYImageMemoryCache shareInstance] objectForKey:@"4"]);
+    
+    [PXYImageMemoryCacheEliminatedRule shareInstanceWithCapacity:2];
+    NSLog(@"===%@",[[PXYImageMemoryCache shareInstance] objectForKey:@"2"]);
+    [[PXYImageMemoryCache shareInstance] setObject:@"6" forKey:@"2"];
+    NSLog(@"===%@",[[PXYImageMemoryCache shareInstance] objectForKey:@"1"]);
+    [[PXYImageMemoryCache shareInstance] setObject:@"5" forKey:@"1"];
+    [[PXYImageMemoryCache shareInstance] setObject:@"2" forKey:@"1"];
+    NSLog(@"===%@",[[PXYImageMemoryCache shareInstance] objectForKey:@"1"]);
+    NSLog(@"===%@",[[PXYImageMemoryCache shareInstance] objectForKey:@"2"]);
 }
+
 - (IBAction)imageRelate:(id)sender {
     ImageRelateViewController *imageRelate = [ImageRelateViewController new];
     [self.navigationController pushViewController:imageRelate animated:YES];

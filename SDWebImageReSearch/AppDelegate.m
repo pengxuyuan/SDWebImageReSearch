@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "PXYSingleClassTest.h"
 #import "PXYMD5DigestHelper.h"
+#import "PXYImageMemoryCacheEliminatedRule.h"
 
 @interface AppDelegate ()
 

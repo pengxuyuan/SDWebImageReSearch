@@ -15,7 +15,7 @@
 #define UNLOCK(semaphore) dispatch_semaphore_signal(semaphore)
 
 
-@interface PXYImageMemoryCache <KeyType, ObjectType> ()<NSCacheDelegate>
+@interface PXYImageMemoryCache <KeyType, ObjectType> ()<NSCacheDelegate,PXYImageMemoryCacheEliminatedDelegate>
 
 @property (nonatomic, strong) NSMapTable<KeyType, ObjectType> *cacheMapTable;
 @property (nonatomic, strong) dispatch_semaphore_t cacheSemaphore_t;
@@ -55,6 +55,9 @@
 - (void)didReceiveMemoryWarning:(NSNotification *)notification {
     // Only remove cache, but keep weak cache
     [super removeAllObjects];
+    if ([self.eliminatedDelegate respondsToSelector:@selector(imageMemoryCacheRemoveAllObject)]) {
+        [self.eliminatedDelegate imageMemoryCacheRemoveAllObject];
+    }
     NSLog(@"Cacha didReceiveMemoryWarning");
 }
 
@@ -70,7 +73,10 @@
             [super setObject:obj forKey:key];
         }
     }
-    NSLog(@"%@内存取值：%@",key,obj);
+    NSLog(@"缓存取值：Key：%@ -- Value：%@",key,obj);
+    if ([self.eliminatedDelegate respondsToSelector:@selector(imageMemoryCacheObjectForKey:fetchValue:)]) {
+        [self.eliminatedDelegate imageMemoryCacheObjectForKey:key fetchValue:obj];
+    }
     return obj;
 }
 
@@ -80,8 +86,11 @@
     if (obj && key) {
         LOCK(self.cacheSemaphore_t);
         [self.cacheMapTable setObject:obj forKey:key];
-        NSLog(@"%@内存设值：%@",key,obj);
+        NSLog(@"设置缓存：Key：%@ -- Value：%@",key,obj);
         UNLOCK(self.cacheSemaphore_t);
+    }
+    if ([self.eliminatedDelegate respondsToSelector:@selector(imageMemoryCacheSetObject:forKey:)]) {
+        [self.eliminatedDelegate imageMemoryCacheSetObject:obj forKey:key];
     }
 }
 
@@ -89,7 +98,7 @@
     [super removeObjectForKey:key];
     LOCK(self.cacheSemaphore_t);
     [self.cacheMapTable removeObjectForKey:key];
-    NSLog(@"%@内存删值",key);
+    NSLog(@"内存删除：Key：%@",key);
     UNLOCK(self.cacheSemaphore_t);
 }
 
@@ -99,6 +108,9 @@
     [self.cacheMapTable removeAllObjects];
     NSLog(@"移除内存所有图片缓存");
     UNLOCK(self.cacheSemaphore_t);
+    if ([self.eliminatedDelegate respondsToSelector:@selector(imageMemoryCacheRemoveAllObject)]) {
+        [self.eliminatedDelegate imageMemoryCacheRemoveAllObject];
+    }
 }
 
 - (NSArray *)fetchAllCacheKeys {
@@ -148,7 +160,10 @@
 
 #pragma mark - NSCacheDelegate
 - (void)cache:(NSCache *)cache willEvictObject:(id)obj {
-//    NSLog(@"willEvictObject");
+    NSLog(@"%s",__func__);
+    if ([self.eliminatedDelegate respondsToSelector:@selector(imageMemoryCacheRemoveObjectForKey:)]) {
+        
+    }
 }
 
 
