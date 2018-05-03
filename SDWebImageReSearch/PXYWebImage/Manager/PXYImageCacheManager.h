@@ -10,7 +10,6 @@
 #import <UIKit/UIKit.h>
 
 @class PXYImageMemoryCache,PXYImageDiskCache;
-//typedef void(^PXYImageCacheCompeleteBlock)();
 
 /**
  缓存管理类

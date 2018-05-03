@@ -8,8 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ NSCache 扩展
+ */
 @interface NSCache (PXYExtension)
 
+/**
+ 实现这两个方法，NSCache 就具有下标糖语法功能
+ */
 - (id)objectForKeyedSubscript:(id)key;
 
 - (void)setObject:(id)object forKeyedSubscript:(id)key;

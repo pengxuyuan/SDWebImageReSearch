@@ -14,12 +14,10 @@
 #define LOCK(semaphore) dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
 #define UNLOCK(semaphore) dispatch_semaphore_signal(semaphore)
 
-
 @interface PXYImageMemoryCache <KeyType, ObjectType> ()<NSCacheDelegate,PXYImageMemoryCacheEliminatedDelegate>
 
 @property (nonatomic, strong) NSMapTable<KeyType, ObjectType> *cacheMapTable;
 @property (nonatomic, strong) dispatch_semaphore_t cacheSemaphore_t;
-
 
 @end
 
@@ -27,16 +25,11 @@
 
 #pragma mark - Life Cycle
 + (instancetype)shareInstance {
-    static dispatch_once_t onceToken;
-    static PXYImageMemoryCache *instance;
-    dispatch_once(&onceToken, ^{
-        instance = [PXYImageMemoryCache new];
-    });
+    PXYImageMemoryCache *instance = [PXYImageMemoryCache new];
     return instance;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.cacheMapTable = [[NSMapTable alloc] initWithKeyOptions:NSPointerFunctionsStrongMemory valueOptions:NSPointerFunctionsWeakMemory capacity:0];
@@ -51,6 +44,15 @@
     return self;
 }
 
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
+    static dispatch_once_t onceToken;
+    static PXYImageMemoryCache *instance;
+    dispatch_once(&onceToken, ^{
+        instance = [super allocWithZone:zone];
+    });
+    return instance;
+}
+
 #pragma mark - Private Methods
 - (void)didReceiveMemoryWarning:(NSNotification *)notification {
     // Only remove cache, but keep weak cache
@@ -58,7 +60,6 @@
     if ([self.eliminatedDelegate respondsToSelector:@selector(imageMemoryCacheRemoveAllObject)]) {
         [self.eliminatedDelegate imageMemoryCacheRemoveAllObject];
     }
-    NSLog(@"Cacha didReceiveMemoryWarning");
 }
 
 #pragma mark - Pulbic Methods
@@ -79,7 +80,6 @@
     }
     return obj;
 }
-
 
 - (void)setObject:obj forKey:key cost:(NSUInteger)g {
     [super setObject:obj forKey:key cost:g];

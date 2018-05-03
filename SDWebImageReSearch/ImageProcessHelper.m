@@ -198,7 +198,7 @@ NSDictionary* PXYFetchImagePropertiesWithImageName (NSString *fileName) {
     }
     
     NSDictionary *propertiesDict = (__bridge NSDictionary *)CGImageSourceCopyPropertiesAtIndex(imageSourceRef, 0, NULL);
-    NSArray *propertiesArray = PropTree(propertiesDict);
+//    NSArray *propertiesArray = PropTree(propertiesDict);
     
     
     

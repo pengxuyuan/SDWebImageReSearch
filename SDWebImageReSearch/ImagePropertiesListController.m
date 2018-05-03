@@ -9,7 +9,7 @@
 #import "ImagePropertiesListController.h"
 #import "ImageProcessHelper.h"
 
-@interface ImagePropertiesListController ()
+@interface ImagePropertiesListController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 

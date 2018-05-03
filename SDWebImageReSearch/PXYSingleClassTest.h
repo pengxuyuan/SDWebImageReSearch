@@ -10,10 +10,9 @@
 #import "WCSingleTool.h"
 
 @interface PXYSingleClassTest : NSObject
-interfaceSingleton(singleClassTest)
+//interfaceSingleton(singleClassTest)
 
 + (instancetype)shareInstance;
-
 
 + (void)destroyInstance;
 

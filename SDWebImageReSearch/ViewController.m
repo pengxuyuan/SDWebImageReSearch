@@ -58,19 +58,11 @@
     self.imageView.image = PXYCreateUIImageFromFileName(@"timg5.gif");
     self.imageView2.image = PXYCreateUIImageFromFileName(@"HomeActivity1@2x.png");
     
-    PXYFetchImagePropertiesWithImageName(@"HomeActivity1@2x.png");
-    PXYFetchImagePropertiesWithImageName(@"timg5.gif");
-    
-    
-//    self.imageView2.image = PXYFetchThumbnailImageFromFileName(@"HomeActivity1@2x.png", 20);
-    
+//    NSDictionary *imageP = PXYFetchImagePropertiesWithImageName(@"HomeActivity1@2x.png");
+//    NSDictionary *gifP = PXYFetchImagePropertiesWithImageName(@"timg5.gif");
+//
 //    UIImage *image0 = PXYCreateUIImageFromFileName(@"HomeActivity1@2x.png");
 //    UIImage *image1 = PXYFetchThumbnailImageFromFileName(@"HomeActivity1@2x.png", 0.1);
-//    UIImage *image2 = PXYFetchThumbnailImageFromFileName(@"HomeActivity1@2x.png", 10);
-//    UIImage *image3 = PXYFetchThumbnailImageFromFileName(@"HomeActivity1@2x.png", 100);
-//    UIImage *image4 = PXYFetchThumbnailImageFromFileName(@"HomeActivity1@2x.png", 1000);
-    
-    //    self.imageView2.image = [UIImage wc_imageByLocalName:@"timg5.gif"];
     
     //编码
 //    NSData *imageData1 = [self encodeImageWithImage:self.imageView.image];
@@ -187,16 +179,5 @@
     [self.navigationController pushViewController:imageProperty animated:YES];
 }
 
-//    NSUInteger fileSize = [imageProperties[(__bridge NSString *)kCGImagePropertyFileSize] integerValue];
-//    NSDictionary *exiProperties = imageProperties[(__bridge NSString *)kCGImagePropertyExifDictionary];
-//    NSString *exifCreateTime = imageProperties[(__bridge NSString*)kCGImagePropertyExifDateTimeOriginal];
-//    NSLog(@"fileSize: %lu",(unsigned long)fileSize);
-//    NSLog(@"exiProperties:%@",exiProperties);
-//    NSLog(@"exifCreateTime:%@",exifCreateTime);
-
-//    NSUInteger width = [imageRealProperties[(__bridge NSString *)kCGImagePropertyPixelWidth] unsignedIntegerValue]; //宽度，像素值
-//    NSUInteger height = [imageRealProperties[(__bridge NSString *)kCGImagePropertyPixelHeight] unsignedIntegerValue]; //高度，像素值
-//    BOOL hasAlpha = [imageRealProperties[(__bridge NSString *)kCGImagePropertyHasAlpha] boolValue]; //是否含有Alpha通道
-//    CGImagePropertyOrientation exifOrientation = [imageRealProperties[(__bridge NSString *)kCGImagePropertyOrientation] integerValue]; // 这里也能直接拿到EXIF方向信息，和前面的一样。如果是iOS 7，就用NSInteger取吧 :)
 
 @end

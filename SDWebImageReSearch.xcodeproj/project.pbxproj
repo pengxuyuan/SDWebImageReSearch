@@ -15,7 +15,6 @@
 		E6097433207DB386003521BA /* timg4.gif in Resources */ = {isa = PBXBuildFile; fileRef = E609742B207DB385003521BA /* timg4.gif */; };
 		E6097434207DB386003521BA /* timg6.gif in Resources */ = {isa = PBXBuildFile; fileRef = E609742C207DB385003521BA /* timg6.gif */; };
 		E6097435207DB386003521BA /* timg1.gif in Resources */ = {isa = PBXBuildFile; fileRef = E609742D207DB386003521BA /* timg1.gif */; };
-		E617574F2084FB7400774B59 /* PXYImageMemoryCache+PXYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E617574E2084FB7400774B59 /* PXYImageMemoryCache+PXYExtension.m */; };
 		E617575220859D7E00774B59 /* NSCache+PXYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E617575120859D7E00774B59 /* NSCache+PXYExtension.m */; };
 		E61757552085F6A800774B59 /* LRUImplement.m in Sources */ = {isa = PBXBuildFile; fileRef = E61757542085F6A800774B59 /* LRUImplement.m */; };
 		E61757582086086200774B59 /* LRUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E61757572086086200774B59 /* LRUViewController.m */; };
@@ -64,6 +63,8 @@
 		E656F470205FF45B00216A23 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E656F46E205FF45B00216A23 /* ListTableViewCell.xib */; };
 		E656F473205FF86C00216A23 /* ListTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F472205FF86C00216A23 /* ListTableViewModel.m */; };
 		E656F475205FFC6500216A23 /* home5.png in Resources */ = {isa = PBXBuildFile; fileRef = E656F474205FFC6500216A23 /* home5.png */; };
+		E67F4D482091C74400CC74B1 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67F4D472091C74400CC74B1 /* Accelerate.framework */; };
+		E6F952F4208F74500069695F /* PXYSingleClassTest1.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F952F3208F74500069695F /* PXYSingleClassTest1.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,8 +76,6 @@
 		E609742B207DB385003521BA /* timg4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = timg4.gif; sourceTree = "<group>"; };
 		E609742C207DB385003521BA /* timg6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = timg6.gif; sourceTree = "<group>"; };
 		E609742D207DB386003521BA /* timg1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = timg1.gif; sourceTree = "<group>"; };
-		E617574D2084FB7400774B59 /* PXYImageMemoryCache+PXYExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PXYImageMemoryCache+PXYExtension.h"; sourceTree = "<group>"; };
-		E617574E2084FB7400774B59 /* PXYImageMemoryCache+PXYExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PXYImageMemoryCache+PXYExtension.m"; sourceTree = "<group>"; };
 		E617575020859D7E00774B59 /* NSCache+PXYExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCache+PXYExtension.h"; sourceTree = "<group>"; };
 		E617575120859D7E00774B59 /* NSCache+PXYExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSCache+PXYExtension.m"; sourceTree = "<group>"; };
 		E61757532085F6A800774B59 /* LRUImplement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRUImplement.h; sourceTree = "<group>"; };
@@ -154,6 +153,9 @@
 		E656F471205FF86C00216A23 /* ListTableViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListTableViewModel.h; sourceTree = "<group>"; };
 		E656F472205FF86C00216A23 /* ListTableViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListTableViewModel.m; sourceTree = "<group>"; };
 		E656F474205FFC6500216A23 /* home5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home5.png; sourceTree = "<group>"; };
+		E67F4D472091C74400CC74B1 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		E6F952F2208F74500069695F /* PXYSingleClassTest1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXYSingleClassTest1.h; sourceTree = "<group>"; };
+		E6F952F3208F74500069695F /* PXYSingleClassTest1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXYSingleClassTest1.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E67F4D482091C74400CC74B1 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +187,7 @@
 			children = (
 				E631AE1520443E0500E586A1 /* SDWebImageReSearch */,
 				E631AE1420443E0500E586A1 /* Products */,
+				E67F4D462091C74200CC74B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -263,6 +267,8 @@
 				E631AE2520443E0500E586A1 /* main.m */,
 				E63286B6205A0C76003BD43F /* PXYSingleClassTest.h */,
 				E63286B7205A0C76003BD43F /* PXYSingleClassTest.m */,
+				E6F952F2208F74500069695F /* PXYSingleClassTest1.h */,
+				E6F952F3208F74500069695F /* PXYSingleClassTest1.m */,
 			);
 			path = SDWebImageReSearch;
 			sourceTree = "<group>";
@@ -270,9 +276,9 @@
 		E64CCEE0207F9A9D00392B0A /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				E64CCEE3207F9A9D00392B0A /* PXYWebImageManager.h */,
 				E64CCEE1207F9A9D00392B0A /* PXYWebImageManager.m */,
 				E64CCEE2207F9A9D00392B0A /* PXYImageCacheManager.h */,
-				E64CCEE3207F9A9D00392B0A /* PXYWebImageManager.h */,
 				E64CCEE4207F9A9D00392B0A /* PXYImageCacheManager.m */,
 			);
 			path = Manager;
@@ -301,16 +307,14 @@
 		E64CCEED207F9A9D00392B0A /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				E64CCEF0207F9A9D00392B0A /* PXYImageDiskCache.h */,
-				E64CCEEE207F9A9D00392B0A /* PXYImageDiskCache.m */,
 				E64CCEF1207F9A9D00392B0A /* PXYImageMemoryCache.h */,
 				E64CCEEF207F9A9D00392B0A /* PXYImageMemoryCache.m */,
-				E617574D2084FB7400774B59 /* PXYImageMemoryCache+PXYExtension.h */,
-				E617574E2084FB7400774B59 /* PXYImageMemoryCache+PXYExtension.m */,
 				E649CD722088965E0080FD8E /* PXYImageMemoryCacheEliminatedRule.h */,
 				E649CD732088965E0080FD8E /* PXYImageMemoryCacheEliminatedRule.m */,
 				E617575020859D7E00774B59 /* NSCache+PXYExtension.h */,
 				E617575120859D7E00774B59 /* NSCache+PXYExtension.m */,
+				E64CCEF0207F9A9D00392B0A /* PXYImageDiskCache.h */,
+				E64CCEEE207F9A9D00392B0A /* PXYImageDiskCache.m */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -322,6 +326,14 @@
 				E64CCEF4207F9A9E00392B0A /* PXYWebImageDownloader.m */,
 			);
 			path = Downloader;
+			sourceTree = "<group>";
+		};
+		E67F4D462091C74200CC74B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E67F4D472091C74400CC74B1 /* Accelerate.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,7 +442,7 @@
 				E64CCEFA207F9A9E00392B0A /* PXYImageDiskCache.m in Sources */,
 				E64CCEF6207F9A9E00392B0A /* PXYImageCacheManager.m in Sources */,
 				E652B2ED2087654F00882B94 /* LRUDoubleLinkedList.m in Sources */,
-				E617574F2084FB7400774B59 /* PXYImageMemoryCache+PXYExtension.m in Sources */,
+				E6F952F4208F74500069695F /* PXYSingleClassTest1.m in Sources */,
 				E64CCEFB207F9A9E00392B0A /* PXYImageMemoryCache.m in Sources */,
 				E649CD742088965E0080FD8E /* PXYImageMemoryCacheEliminatedRule.m in Sources */,
 				E64CCEF7207F9A9E00392B0A /* UIImageView+PXYWebCache.m in Sources */,

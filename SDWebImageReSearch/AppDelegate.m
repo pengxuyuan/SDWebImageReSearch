@@ -10,6 +10,7 @@
 #import "PXYSingleClassTest.h"
 #import "PXYMD5DigestHelper.h"
 #import "PXYImageMemoryCacheEliminatedRule.h"
+#import "PXYSingleClassTest1.h"
 
 @interface AppDelegate ()
 
@@ -19,12 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(nullable NSDictionary<UIApplicationLaunchOptionsKey, id> *)launchOptions {
     NSLog(@"程序即将启动完成 %s",__func__);
-#if UIKIT_STRING_ENUMS
-    NSLog(@"1");
-#else
-    NSLog(@"0");
-#endif
-    
     return YES;
 }
 

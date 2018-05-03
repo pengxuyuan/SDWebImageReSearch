@@ -27,7 +27,7 @@
 #import "PXYSingleClassTest.h"
 
 @implementation PXYSingleClassTest
-//implementationSingleton(singleClassTest)
+
 + (instancetype)shareInstance {
     PXYSingleClassTest *shareInstance = [PXYSingleClassTest new];
     return shareInstance;
@@ -42,9 +42,9 @@ static dispatch_once_t onceToken;
     return shareInstance;
 }
 
-- (id)copyWithZone:(NSZone *)zone{
-    return shareInstance;
-}
+//- (id)copyWithZone:(NSZone *)zone{
+//    return shareInstance;
+//}
 
 + (void)destroyInstance {
     onceToken = 0;

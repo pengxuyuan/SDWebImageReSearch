@@ -136,10 +136,6 @@
     [self.mapTable removeAllObjects];
 }
 
-- (id)imageMemoryCacheShouldRemoveCache {
-    return nil;
-}
-
 #pragma mark - Private Methods
 - (void)pushFrontWithNode:(ImageCacheNode *)curNode {
     if ([[PXYImageMemoryCache shareInstance] fetchAllCacheKeys].count == 1 ||
