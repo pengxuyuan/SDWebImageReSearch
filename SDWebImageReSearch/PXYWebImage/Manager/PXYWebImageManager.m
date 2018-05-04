@@ -36,18 +36,19 @@
      4.请求完之后写磁盘&内存
      */
     NSString *urlKey = [url absoluteString];
-    UIImage *image;
-    image = [[PXYImageCacheManager shareInstance] fetchImageWithKey:urlKey];
-    if (image) {
-        compelete(nil,image,nil);
-    }else {
-        [self.imageDownloader downloadImageWithImageUrl:url compeleteBlock:^(NSData *imageData, UIImage *image, NSError *error) {
-            compelete(imageData,image,error);
-            if (!error) {
-                [[PXYImageCacheManager shareInstance] storeImage:image forKey:urlKey];
-            }
-        }];
-    }
+    [[PXYImageCacheManager shareInstance] fetchCacheOperationForKey:urlKey completion:^(UIImage *image, NSData *imageData, PXYImageCacheType cacheType) {
+        if (image) {
+            compelete(nil,image,nil);
+        } else {
+            [self.imageDownloader downloadImageWithImageUrl:url compeleteBlock:^(NSData *imageData, UIImage *image, NSError *error) {
+                compelete(imageData,image,error);
+                if (!error) {
+                    [[PXYImageCacheManager shareInstance] storeImage:image forKey:urlKey completion:nil];
+                }
+            }];
+        }
+    }];
+
     
 }
 

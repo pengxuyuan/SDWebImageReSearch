@@ -229,8 +229,6 @@
 				E656F46E205FF45B00216A23 /* ListTableViewCell.xib */,
 				E656F471205FF86C00216A23 /* ListTableViewModel.h */,
 				E656F472205FF86C00216A23 /* ListTableViewModel.m */,
-				E63286C5205BC28C003BD43F /* PXYMD5DigestHelper.h */,
-				E63286C6205BC28C003BD43F /* PXYMD5DigestHelper.m */,
 				E64CCF0220807DE100392B0A /* ImageProcessHelper.h */,
 				E64CCF0320807DE100392B0A /* ImageProcessHelper.m */,
 				E63286B9205A1146003BD43F /* WCSingleTool.h */,
@@ -296,10 +294,12 @@
 		E64CCEE8207F9A9D00392B0A /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				E64CCEE9207F9A9D00392B0A /* NSMutableDictionary+PXYExtension.m */,
-				E64CCEEA207F9A9D00392B0A /* NSMutableArray+PXYExtension.m */,
+				E63286C5205BC28C003BD43F /* PXYMD5DigestHelper.h */,
+				E63286C6205BC28C003BD43F /* PXYMD5DigestHelper.m */,
 				E64CCEEB207F9A9D00392B0A /* NSMutableDictionary+PXYExtension.h */,
+				E64CCEE9207F9A9D00392B0A /* NSMutableDictionary+PXYExtension.m */,
 				E64CCEEC207F9A9D00392B0A /* NSMutableArray+PXYExtension.h */,
+				E64CCEEA207F9A9D00392B0A /* NSMutableArray+PXYExtension.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -597,6 +597,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JQ65Q8X2ZJ;
 				INFOPLIST_FILE = SDWebImageReSearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pengxuyuan.SDWebImageReSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -611,6 +612,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JQ65Q8X2ZJ;
 				INFOPLIST_FILE = SDWebImageReSearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pengxuyuan.SDWebImageReSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";

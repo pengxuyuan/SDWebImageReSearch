@@ -74,7 +74,7 @@
             [super setObject:obj forKey:key];
         }
     }
-    NSLog(@"缓存取值：Key：%@ -- Value：%@",key,obj);
+    NSLog(@"内存缓存取值：Key：%@ -- Value：%@",key,obj);
     if ([self.eliminatedDelegate respondsToSelector:@selector(imageMemoryCacheObjectForKey:fetchValue:)]) {
         [self.eliminatedDelegate imageMemoryCacheObjectForKey:key fetchValue:obj];
     }
@@ -86,7 +86,7 @@
     if (obj && key) {
         LOCK(self.cacheSemaphore_t);
         [self.cacheMapTable setObject:obj forKey:key];
-        NSLog(@"设置缓存：Key：%@ -- Value：%@",key,obj);
+        NSLog(@"内存设置缓存：Key：%@ -- Value：%@",key,obj);
         UNLOCK(self.cacheSemaphore_t);
     }
     if ([self.eliminatedDelegate respondsToSelector:@selector(imageMemoryCacheSetObject:forKey:)]) {

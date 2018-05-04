@@ -133,15 +133,27 @@
                                     <segue destination="T7p-K0-Tfu" kind="show" id="DYW-nn-mRJ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="磁盘缓存大小数量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA8-Y4-uDd">
+                                <rect key="frame" x="0.0" y="463" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.88235294119999996" green="0.35294117650000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="vsy-5S-cfn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qhP-fi-Dtu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="0Az-OL-cB8"/>
                             <constraint firstItem="JdG-Sf-j7s" firstAttribute="top" secondItem="gRQ-Om-sfM" secondAttribute="bottom" constant="5" id="1Wf-JR-ILq"/>
                             <constraint firstItem="KId-Jt-ptp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2Gk-J0-aQa"/>
+                            <constraint firstItem="XA8-Y4-uDd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7Dp-pg-nXt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qhP-fi-Dtu" secondAttribute="trailing" constant="2" id="GRp-5h-gsz"/>
                             <constraint firstItem="gRQ-Om-sfM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Glf-uZ-z70"/>
                             <constraint firstItem="gRQ-Om-sfM" firstAttribute="top" secondItem="Tmj-0H-DLT" secondAttribute="bottom" constant="20" id="HGq-p0-CPe"/>
+                            <constraint firstItem="XA8-Y4-uDd" firstAttribute="top" secondItem="KId-Jt-ptp" secondAttribute="bottom" constant="20" id="LYZ-C9-q6D"/>
+                            <constraint firstItem="XA8-Y4-uDd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="MXp-OI-ab0"/>
                             <constraint firstItem="Tmj-0H-DLT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VXh-mM-7wB"/>
                             <constraint firstItem="uS0-so-9GW" firstAttribute="height" secondItem="qhP-fi-Dtu" secondAttribute="height" id="WiV-ei-00C"/>
                             <constraint firstItem="5Bc-p2-deP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Z5w-R1-Emm"/>
@@ -162,6 +174,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="oE6-iO-XsU"/>
                     <connections>
+                        <outlet property="diskCacheInfo" destination="XA8-Y4-uDd" id="1B4-aX-fiw"/>
                         <outlet property="imageView" destination="uS0-so-9GW" id="EUZ-qk-QX7"/>
                         <outlet property="imageView2" destination="qhP-fi-Dtu" id="XUq-vQ-39c"/>
                     </connections>

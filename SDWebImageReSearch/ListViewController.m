@@ -81,7 +81,7 @@ static NSString *const kMultiImage6 = @"https://upload.jianshu.io/collections/im
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _modelArray.count;
+    return 2;
 }
 
 
@@ -98,6 +98,7 @@ static NSString *const kMultiImage6 = @"https://upload.jianshu.io/collections/im
         _tableView.rowHeight = 80;
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.tableFooterView = [UIView new];
     }
     return _tableView;
 }

@@ -11,55 +11,149 @@
 
 @class PXYImageMemoryCache,PXYImageDiskCache;
 
+
+/**
+ 图片缓存的类型
+ */
+typedef NS_ENUM(NSInteger, PXYImageCacheType) {
+    //没有缓存
+    PXYImageCacheTypeNone,
+    //内存缓存
+    PXYImageCacheTypeMemory,
+    //磁盘缓存
+    PXYImageCacheTypeDisk
+};
+
+typedef NS_OPTIONS(NSInteger, PXYImageCacheOptions) {
+    //内存缓存命中直接返回
+    PXYImageCacheOptionsReturnDataWhenInMemory,
+    //同步查询磁盘数据
+    PXYImageCacheOptionsQueryDiskSync
+};
+
+//不需要任何参数，只是通知任务完成
+typedef void (^PXYWebImageNoParamsBlock)(void);
+//查询图片是否存在
+typedef void (^PXYWebImageCheckImageCompletionBlock)(BOOL isExist);
+//获取图片
+typedef void (^PXYWebImageFetchImageCompletionBlock)(UIImage *image, NSData *imageData,PXYImageCacheType cacheType);
+typedef void (^PXYWebImageCalculateCompletionBlock)(NSUInteger fileCount, NSUInteger fileSize);
+
+
 /**
  缓存管理类
  */
 @interface PXYImageCacheManager : NSObject
 
+/**
+ 单例
+ */
 + (instancetype)shareInstance;
 
-@property (nonatomic, strong, readonly) PXYImageMemoryCache *memoryCache;
-@property (nonatomic, strong, readonly) PXYImageDiskCache *diskCache;
+#pragma mark - 内存缓存配置
+/**
+ 设置内存最大消耗
+ */
+@property (nonatomic, assign) NSUInteger maxMemoryCost;
 
 /**
- 用 key 缓存图片到内存和磁盘
+ 设置内存最大缓存数量
  */
-- (void)storeImage:(UIImage *)image forKey:(NSString *)key;
+@property (nonatomic, assign) NSUInteger maxMemoryCountLimit;
+
+#pragma mark - 存储数据方法
+/**
+ 将数据存在内存 & 磁盘，存储完毕 Block 回调通知
+ */
+- (void)storeImage:(UIImage *)image
+            forKey:(NSString *)key
+        completion:(PXYWebImageNoParamsBlock)completionBlock;
 
 /**
- 用 key 缓存图片到内存和磁盘
- @param toDisk 为YES，就加上磁盘缓存，为NO的时候就单纯存内存
+ 将数据存在内存 & 磁盘，存储完毕 Block 回调通知
+
+ @param toDisk YES：同时存到磁盘； NO：不存到磁盘
  */
-- (void)storeImage:(UIImage *)image forKey:(NSString *)key toDisk:(BOOL)toDisk;
+- (void)storeImage:(UIImage *)image
+            forKey:(NSString *)key
+            toDisk:(BOOL)toDisk
+        completion:(PXYWebImageNoParamsBlock)completionBlock;
 
 /**
- 用 Key 去内存、磁盘中查找图片
+ 将数据存在内存 & 磁盘，存储完毕 Block 回调通知
+ @param imageData 磁盘直接存储 Data，不需要内部再次转换，优化性能
  */
-- (UIImage *)fetchImageWithKey:(NSString *)key;
+- (void)storeImage:(UIImage *)image
+         imageData:(NSData *)imageData
+            forKey:(NSString *)key
+            toDisk:(BOOL)toDisk
+        completion:(PXYWebImageNoParamsBlock)completionBlock;
+
+#pragma mark - 获取数据方法
+/**
+ 异步查询磁盘中是否有这张图片
+ */
+- (void)inquireDiskImageExistsWithKey:(NSString *)key completion:(PXYWebImageCheckImageCompletionBlock)completionBlock;
 
 /**
- 用 Key 去内存中查找图片
+ 同步查询磁盘中是否有这张图片
  */
-- (UIImage *)fetchImageFromMemoryWithKey:(NSString *)key;
+- (BOOL)inquireDiskImageExistsWithKey:(NSString *)key;
 
 /**
- 用 Key 去磁盘中查找图片
+ 异步获取图片
  */
-- (UIImage *)fetchImageFormDiskWithKey:(NSString *)key;
+- (NSOperation *)fetchCacheOperationForKey:(NSString *)key completion:(PXYWebImageFetchImageCompletionBlock)completionBlock;
 
 /**
- 清除内存、磁盘中的缓存
+ 获取图片，根据 options 策略进行同步异步操作
  */
-- (void)clearAllCacheImage;
+- (NSOperation *)fetchCacheOperationForKey:(NSString *)key options:(PXYImageCacheOptions)options completion:(PXYWebImageFetchImageCompletionBlock)completionBlock;
 
 /**
- 清除内存中的缓存
+ 从内存缓存中获取图片
  */
-- (void)clearMemoryCacheImage;
+- (UIImage *)fetchImageFromMemoryCacheForKey:(NSString *)key;
 
 /**
- 清除磁盘中的缓存
+ 同步方法：从磁盘缓存中查找图片
  */
-- (void)clearDiskCacheImage;
+- (UIImage *)fetchImageFormDiskCacheForKey:(NSString *)key;
+
+/**
+ 从缓存中获取图片
+ */
+- (UIImage *)fectchImageFormCacheForKey:(NSString *)key;
+
+#pragma mark - 清除数据
+/**
+ 清除所有内存缓存
+ */
+- (void)clearAllMemoryCache;
+
+/**
+ 异步清除磁盘缓存
+ */
+- (void)clearAllDiskCacheCompletion:(PXYWebImageNoParamsBlock)completionBlock;
+
+#pragma mark - 磁盘缓存相关信息
+/**
+ 获取磁盘缓存文件大小
+ */
+- (NSUInteger)fetchDiskCacheSize;
+
+/**
+ 获取磁盘缓存数量
+ */
+- (NSUInteger)fetchDiskCacheCount;
+
+/**
+ 异步计算磁盘缓存文件大小&数量
+ */
+- (void)calculateDiskCacheSizeWithCompletionBlock:(PXYWebImageCalculateCompletionBlock)completionBlock;
+
+
+
+
 
 @end

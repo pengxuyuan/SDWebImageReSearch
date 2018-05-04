@@ -38,11 +38,15 @@
 
 #pragma mark - Public Methods
 - (void)downloadImageWithImageUrl:(NSURL *)url compeleteBlock:(PXYWebImageDownloadCompleteBlock)compelete {
-    NSBlockOperation *operation = self.operationDict[@"url"];
-    if (operation) return;
+    NSString *urlStr = [url absoluteString];
+    NSBlockOperation *operation = self.operationDict[urlStr];
+    if (operation) {
+        NSLog(@"下载队列已经存在该 URL 请求：%@",url);
+        return;
+    }
+    
     
     __weak typeof(self) weakSelf = self;
-    NSString *urlStr = [url absoluteString];
     operation = [NSBlockOperation blockOperationWithBlock:^{
         __strong typeof(weakSelf)strongSelf = weakSelf;
         [strongSelf realDownloadImageWithImageUrl:url compeleteBlock:compelete];
