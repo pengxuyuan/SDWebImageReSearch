@@ -37,6 +37,11 @@
 - (NSData *_Nullable)fetchDiskImageDataWithKey:(nullable NSString *)key;
 
 /**
+ 在磁盘上面移除图片
+ */
+- (void)removeDiskImageDataForKey:(nullable NSString*)key;
+
+/**
  清除磁盘中的图片缓存
  */
 - (void)clearImageOnDiskCache;

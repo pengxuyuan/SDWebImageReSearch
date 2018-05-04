@@ -266,6 +266,40 @@
     image = [self fetchImageFormDiskCacheForKey:key];
     return image;
 }
+#pragma mark - 移除数据
+/**
+ 异步移除图片缓存
+ */
+- (void)removeImageForKey:(NSString *)key completion:(PXYWebImageNoParamsBlock)completionBlock {
+    [self removeImageForKey:key fromDisk:YES completion:completionBlock];
+}
+
+/**
+ 异步移除图片缓存
+ fromDisk: YES-移除磁盘 NO-不移除磁盘
+ */
+- (void)removeImageForKey:(NSString *)key fromDisk:(BOOL)fromDisk completion:(PXYWebImageNoParamsBlock)completionBlock {
+    if (!key) {
+        return;
+    }
+    
+    [self.memoryCache removeObjectForKey:key];
+    
+    if (fromDisk) {
+        dispatch_async(self.ioQueue, ^{
+            [self.diskCache removeDiskImageDataForKey:key];
+            if (completionBlock) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionBlock();
+                });
+            }
+        });
+    } else {
+        if (completionBlock) {
+            completionBlock();
+        }
+    }
+}
 
 #pragma mark - 清除数据
 /**

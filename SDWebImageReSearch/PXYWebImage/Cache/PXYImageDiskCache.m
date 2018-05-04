@@ -104,6 +104,18 @@
 }
 
 /**
+ 在磁盘上面移除图片
+ */
+- (void)removeDiskImageDataForKey:(nullable NSString*)key {
+    NSString *imagePath = [self defaultCachePathForKey:key];
+    if ([self.fileManager removeItemAtPath:imagePath error:nil]) {
+        NSLog(@"磁盘移除成功：Key：%@",key);
+    } else {
+        NSLog(@"磁盘移除失败：Key：%@",key);
+    }
+}
+
+/**
  清除磁盘中的图片缓存
  */
 - (void)clearImageOnDiskCache {

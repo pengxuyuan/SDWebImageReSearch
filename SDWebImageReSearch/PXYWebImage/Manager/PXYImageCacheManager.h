@@ -125,6 +125,19 @@ typedef void (^PXYWebImageCalculateCompletionBlock)(NSUInteger fileCount, NSUInt
  */
 - (UIImage *)fectchImageFormCacheForKey:(NSString *)key;
 
+#pragma mark - 移除数据
+/**
+ 异步移除图片缓存
+ */
+- (void)removeImageForKey:(NSString *)key completion:(PXYWebImageNoParamsBlock)completionBlock;
+
+/**
+ 异步移除图片缓存
+ fromDisk: YES-移除磁盘 NO-不移除磁盘
+ */
+- (void)removeImageForKey:(NSString *)key fromDisk:(BOOL)fromDisk completion:(PXYWebImageNoParamsBlock)completionBlock;
+
+
 #pragma mark - 清除数据
 /**
  清除所有内存缓存
