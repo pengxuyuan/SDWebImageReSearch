@@ -11,6 +11,7 @@
 /*
  内存缓存类
  1.利用 NSCache 实现内存缓存
+ 
  2.利用 “泛型” 标识 Key-Value 的类型
  3.利用 NSMapTable 属性做一个内存警告时候的小优化
  4.提供 API 返回当前缓存中的所有的 Key，Value，Key-Value，这个返回的 NSArray NSDictionary 不会强引用对象，也不要求 Key 实现 NSCoping 协议

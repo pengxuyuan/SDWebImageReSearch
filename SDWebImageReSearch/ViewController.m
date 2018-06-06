@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "ListViewController.h"
+//#import "ListViewController.h"
 #import "PXYImageCacheManager.h"
 #import "NSMutableArray+PXYExtension.h" 
 #import "NSMutableDictionary+PXYExtension.h"
@@ -23,6 +23,9 @@
 #import "LRUImplement.h"
 #import "LRUDoubleLinkedList.h"
 #import "PXYImageMemoryCacheEliminatedRule.h"
+
+#import "ImageResearchController.h"
+#import "SandboxViewController.h"
 
 /*
  1.NSData 几种换取方式有差别，有些把图片的信息删除了
@@ -56,20 +59,9 @@
 @implementation ViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.imageView.image = PXYCreateUIImageFromFileName(@"timg5.gif");
     self.imageView2.image = PXYCreateUIImageFromFileName(@"HomeActivity1@2x.png");
-    
-//    NSDictionary *imageP = PXYFetchImagePropertiesWithImageName(@"HomeActivity1@2x.png");
-//    NSDictionary *gifP = PXYFetchImagePropertiesWithImageName(@"timg5.gif");
-//
-//    UIImage *image0 = PXYCreateUIImageFromFileName(@"HomeActivity1@2x.png");
-//    UIImage *image1 = PXYFetchThumbnailImageFromFileName(@"HomeActivity1@2x.png", 0.1);
-    
-    //编码
-//    NSData *imageData1 = [self encodeImageWithImage:self.imageView.image];
-//    NSLog(@"imageData:%@",imageData1);
-//
-//    GenericsModel *model = [GenericsModel new];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,6 +69,44 @@
     
     NSString *info = [NSString stringWithFormat:@"DiskCache:Size:%lu-Count:%lu",(unsigned long)[[PXYImageCacheManager shareInstance] fetchDiskCacheSize],(unsigned long)[[PXYImageCacheManager shareInstance] fetchDiskCacheCount] ];
     self.diskCacheInfo.text = info;
+    
+//    NSString *p = @"\U0001F30D";
+//    NSString *p1 = @"\U0001F31D";
+//    NSString *p2 = [NSString stringWithFormat:@"%C",@"\u0041"];
+//    NSString *q = @"\U00000041";
+//    char a = "\U0011F31D";
+//    char b = "\U0001F31D";
+    
+    NSString *s = @"我";
+    
+    NSUInteger length0 = s.length;
+    NSUInteger length1 = [s lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    NSUInteger length2 = [s lengthOfBytesUsingEncoding:NSASCIIStringEncoding];
+    NSUInteger length3 = [s lengthOfBytesUsingEncoding:NSUTF16StringEncoding];
+    NSUInteger length4 = [s lengthOfBytesUsingEncoding:NSUTF32StringEncoding];
+    
+    NSLog(@"length %lu",(unsigned long)length0);
+    NSLog(@"NSUTF8StringEncoding %lu",(unsigned long)length1);
+    NSLog(@"NSASCIIStringEncoding %lu",(unsigned long)length2);
+    NSLog(@"NSUTF16StringEncoding %lu",(unsigned long)length3);
+    NSLog(@"NSUTF32StringEncoding %lu",(unsigned long)length4);
+    
+    
+//    NSString *a0 = [s stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+//    NSString *a1 = [s stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+//    NSString *a2 = [s stringByAddingPercentEscapesUsingEncoding:NSUTF16StringEncoding];
+//    NSString *a3 = [s stringByAddingPercentEscapesUsingEncoding:NSUTF32StringEncoding];
+    
+    
+//    NSLog(@"==================");
+//    NSLog(@"a0:%s ==== NSUTF8StringEncoding %lu",a0,strlen(a0));
+////    NSLog(@"NSASCIIStringEncoding %d",strlen(a1));
+//    NSLog(@"a2:%s ==== NSUTF16StringEncoding %lu",a2,strlen(a2));
+//    NSLog(@"a3:%s ==== NSUTF32StringEncoding %lu",a3,strlen(a3));
+    
+    
+    NSString *s1 = @"e\u0301";
+    self.diskCacheInfo.text = s1;
 }
 
 //编码
@@ -110,8 +140,8 @@
 }
 
 - (IBAction)jumpTableViewPage:(id)sender {
-    ListViewController *list = [ListViewController new];
-    [self.navigationController pushViewController:list animated:YES];
+//    ListViewController *list = [ListViewController new];
+//    [self.navigationController pushViewController:list animated:YES];
 }
 
 - (IBAction)clearMemoryCache:(id)sender {
@@ -136,6 +166,18 @@
     ImagePropertiesListController *imageProperty = [ImagePropertiesListController new];
     [self.navigationController pushViewController:imageProperty animated:YES];
 }
+
+- (IBAction)imageResearch:(id)sender {
+    ImageResearchController *research = [ImageResearchController new];
+    [self.navigationController pushViewController:research animated:YES];
+}
+
+- (IBAction)sandbox:(id)sender {
+    SandboxViewController *sandbox = [SandboxViewController new];
+    [self.navigationController pushViewController:sandbox animated:YES];
+}
+
+
 
 
 @end

@@ -18,6 +18,7 @@
 		E617575220859D7E00774B59 /* NSCache+PXYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E617575120859D7E00774B59 /* NSCache+PXYExtension.m */; };
 		E61757552085F6A800774B59 /* LRUImplement.m in Sources */ = {isa = PBXBuildFile; fileRef = E61757542085F6A800774B59 /* LRUImplement.m */; };
 		E61757582086086200774B59 /* LRUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E61757572086086200774B59 /* LRUViewController.m */; };
+		E61C36B020C7814000579D58 /* check_green.png in Resources */ = {isa = PBXBuildFile; fileRef = E61C36AF20C7814000579D58 /* check_green.png */; };
 		E623A42C207C57C40047FFC5 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E623A42B207C57C30047FFC5 /* loading.gif */; };
 		E623A42E207C8B030047FFC5 /* xubox_loading0.gif in Resources */ = {isa = PBXBuildFile; fileRef = E623A42D207C8B020047FFC5 /* xubox_loading0.gif */; };
 		E623A750207C91F90047FFC5 /* UIImage+WCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E623A74E207C91F80047FFC5 /* UIImage+WCImage.m */; };
@@ -64,6 +65,10 @@
 		E656F473205FF86C00216A23 /* ListTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F472205FF86C00216A23 /* ListTableViewModel.m */; };
 		E656F475205FFC6500216A23 /* home5.png in Resources */ = {isa = PBXBuildFile; fileRef = E656F474205FFC6500216A23 /* home5.png */; };
 		E67F4D482091C74400CC74B1 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67F4D472091C74400CC74B1 /* Accelerate.framework */; };
+		E6A02ABE20C6787500AFF360 /* NSOperation+PXYWebImageExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A02ABD20C6787400AFF360 /* NSOperation+PXYWebImageExtension.m */; };
+		E6A02AC220C68BCD00AFF360 /* ImageResearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A02AC020C68BCD00AFF360 /* ImageResearchController.m */; };
+		E6A02AC320C68BCD00AFF360 /* ImageResearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6A02AC120C68BCD00AFF360 /* ImageResearchController.xib */; };
+		E6A02AC620C6DE4C00AFF360 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A02AC520C6DE4C00AFF360 /* SandboxViewController.m */; };
 		E6F952F4208F74500069695F /* PXYSingleClassTest1.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F952F3208F74500069695F /* PXYSingleClassTest1.m */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +87,7 @@
 		E61757542085F6A800774B59 /* LRUImplement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRUImplement.m; sourceTree = "<group>"; };
 		E61757562086086200774B59 /* LRUViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRUViewController.h; sourceTree = "<group>"; };
 		E61757572086086200774B59 /* LRUViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRUViewController.m; sourceTree = "<group>"; };
+		E61C36AF20C7814000579D58 /* check_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_green.png; sourceTree = "<group>"; };
 		E623A42B207C57C30047FFC5 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		E623A42D207C8B020047FFC5 /* xubox_loading0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = xubox_loading0.gif; sourceTree = "<group>"; };
 		E623A74E207C91F80047FFC5 /* UIImage+WCImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WCImage.m"; sourceTree = "<group>"; };
@@ -154,6 +160,13 @@
 		E656F472205FF86C00216A23 /* ListTableViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListTableViewModel.m; sourceTree = "<group>"; };
 		E656F474205FFC6500216A23 /* home5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home5.png; sourceTree = "<group>"; };
 		E67F4D472091C74400CC74B1 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		E6A02ABC20C6787400AFF360 /* NSOperation+PXYWebImageExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperation+PXYWebImageExtension.h"; sourceTree = "<group>"; };
+		E6A02ABD20C6787400AFF360 /* NSOperation+PXYWebImageExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperation+PXYWebImageExtension.m"; sourceTree = "<group>"; };
+		E6A02ABF20C68BCD00AFF360 /* ImageResearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageResearchController.h; sourceTree = "<group>"; };
+		E6A02AC020C68BCD00AFF360 /* ImageResearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageResearchController.m; sourceTree = "<group>"; };
+		E6A02AC120C68BCD00AFF360 /* ImageResearchController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageResearchController.xib; sourceTree = "<group>"; };
+		E6A02AC420C6DE4C00AFF360 /* SandboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
+		E6A02AC520C6DE4C00AFF360 /* SandboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SandboxViewController.m; sourceTree = "<group>"; };
 		E6F952F2208F74500069695F /* PXYSingleClassTest1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXYSingleClassTest1.h; sourceTree = "<group>"; };
 		E6F952F3208F74500069695F /* PXYSingleClassTest1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXYSingleClassTest1.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,8 +233,13 @@
 				E64CCEFF20805A7100392B0A /* ImageRelateViewController.xib */,
 				E64CCF122081EFED00392B0A /* ImagePropertiesListController.h */,
 				E64CCF132081EFED00392B0A /* ImagePropertiesListController.m */,
+				E6A02ABF20C68BCD00AFF360 /* ImageResearchController.h */,
+				E6A02AC020C68BCD00AFF360 /* ImageResearchController.m */,
+				E6A02AC120C68BCD00AFF360 /* ImageResearchController.xib */,
 				E623A74F207C91F80047FFC5 /* UIImage+WCImage.h */,
 				E623A74E207C91F80047FFC5 /* UIImage+WCImage.m */,
+				E6A02AC420C6DE4C00AFF360 /* SandboxViewController.h */,
+				E6A02AC520C6DE4C00AFF360 /* SandboxViewController.m */,
 				E656F469205FF1EF00216A23 /* ListViewController.h */,
 				E656F46A205FF1EF00216A23 /* ListViewController.m */,
 				E656F46C205FF45B00216A23 /* ListTableViewCell.h */,
@@ -235,6 +253,7 @@
 				E64CCEDD207F346600392B0A /* GenericsModel.h */,
 				E64CCEDE207F346600392B0A /* GenericsModel.m */,
 				E631AE1C20443E0500E586A1 /* Main.storyboard */,
+				E61C36AF20C7814000579D58 /* check_green.png */,
 				E63286C3205B9183003BD43F /* one.png */,
 				E656F474205FFC6500216A23 /* home5.png */,
 				E6478C2C20614E9B00F08250 /* HomeActivity1@2x.png */,
@@ -294,6 +313,8 @@
 		E64CCEE8207F9A9D00392B0A /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				E6A02ABC20C6787400AFF360 /* NSOperation+PXYWebImageExtension.h */,
+				E6A02ABD20C6787400AFF360 /* NSOperation+PXYWebImageExtension.m */,
 				E63286C5205BC28C003BD43F /* PXYMD5DigestHelper.h */,
 				E63286C6205BC28C003BD43F /* PXYMD5DigestHelper.m */,
 				E64CCEEB207F9A9D00392B0A /* NSMutableDictionary+PXYExtension.h */,
@@ -394,6 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6A02AC320C68BCD00AFF360 /* ImageResearchController.xib in Resources */,
 				E6478C3220614E9B00F08250 /* HomeActivity1@2x.png in Resources */,
 				E64CCF0F2080AFE400392B0A /* mew_interlaced.png in Resources */,
 				E609742F207DB386003521BA /* timg3.gif in Resources */,
@@ -403,6 +425,7 @@
 				E623A42E207C8B030047FFC5 /* xubox_loading0.gif in Resources */,
 				E6097433207DB386003521BA /* timg4.gif in Resources */,
 				E64CCF0C2080AFE400392B0A /* mew_baseline.gif in Resources */,
+				E61C36B020C7814000579D58 /* check_green.png in Resources */,
 				E64CCF0D2080AFE400392B0A /* mew_baseline.jpg in Resources */,
 				E6097435207DB386003521BA /* timg1.gif in Resources */,
 				E63286C4205B9183003BD43F /* one.png in Resources */,
@@ -442,6 +465,7 @@
 				E64CCEFA207F9A9E00392B0A /* PXYImageDiskCache.m in Sources */,
 				E64CCEF6207F9A9E00392B0A /* PXYImageCacheManager.m in Sources */,
 				E652B2ED2087654F00882B94 /* LRUDoubleLinkedList.m in Sources */,
+				E6A02ABE20C6787500AFF360 /* NSOperation+PXYWebImageExtension.m in Sources */,
 				E6F952F4208F74500069695F /* PXYSingleClassTest1.m in Sources */,
 				E64CCEFB207F9A9E00392B0A /* PXYImageMemoryCache.m in Sources */,
 				E649CD742088965E0080FD8E /* PXYImageMemoryCacheEliminatedRule.m in Sources */,
@@ -450,6 +474,7 @@
 				E656F46F205FF45B00216A23 /* ListTableViewCell.m in Sources */,
 				E63286B8205A0C76003BD43F /* PXYSingleClassTest.m in Sources */,
 				E631AE2620443E0500E586A1 /* main.m in Sources */,
+				E6A02AC220C68BCD00AFF360 /* ImageResearchController.m in Sources */,
 				E617575220859D7E00774B59 /* NSCache+PXYExtension.m in Sources */,
 				E64CCF142081EFED00392B0A /* ImagePropertiesListController.m in Sources */,
 				E64CCF0020805A7100392B0A /* ImageRelateViewController.m in Sources */,
@@ -460,6 +485,7 @@
 				E64CCEF5207F9A9E00392B0A /* PXYWebImageManager.m in Sources */,
 				E623A750207C91F90047FFC5 /* UIImage+WCImage.m in Sources */,
 				E656F473205FF86C00216A23 /* ListTableViewModel.m in Sources */,
+				E6A02AC620C6DE4C00AFF360 /* SandboxViewController.m in Sources */,
 				E64CCEFC207F9A9E00392B0A /* PXYWebImageDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

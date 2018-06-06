@@ -33,6 +33,7 @@ static NSString *const kMultiImage6 = @"https://upload.jianshu.io/collections/im
     [super viewDidLoad];
     [self buildData];
     [self.view addSubview:self.tableView];
+    
 }
 
 - (nullable NSString *)fetchPersonWithAdress:(_Nullable id * _Nonnull )adress {

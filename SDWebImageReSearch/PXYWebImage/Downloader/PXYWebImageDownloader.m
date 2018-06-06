@@ -7,6 +7,7 @@
 //
 
 #import "PXYWebImageDownloader.h"
+#import "NSOperation+PXYWebImageExtension.h"
 
 @interface PXYWebImageDownloader()
 
@@ -20,7 +21,6 @@
  防止多次请求
  */
 @property (nonatomic, strong) NSMutableDictionary <NSString *,NSBlockOperation *>*operationDict;
-
 
 
 @end
@@ -40,21 +40,39 @@
 - (void)downloadImageWithImageUrl:(NSURL *)url compeleteBlock:(PXYWebImageDownloadCompleteBlock)compelete {
     NSString *urlStr = [url absoluteString];
     NSBlockOperation *operation = self.operationDict[urlStr];
-    if (operation) {
+    if (operation == nil) {
+        __weak typeof(self) weakSelf = self;
+        operation = [NSBlockOperation blockOperationWithBlock:^{
+            __strong typeof(weakSelf)strongSelf = weakSelf;
+            [strongSelf realDownloadImageWithImageUrl:url compeleteBlock:^(NSData *imageData, UIImage *image, NSError *error) {
+                NSBlockOperation *tempOperation = self.operationDict[urlStr];
+                
+                if (tempOperation.operationCallbackArray.count > 0) {
+                    for (NSMutableDictionary *callbackDict in tempOperation.operationCallbackArray) {
+                        PXYWebImageDownloadCompleteBlock completeBlock = callbackDict[@"compeleteBlock"];
+                        completeBlock(imageData, image, error);
+                    }
+                }
+                
+                [strongSelf.operationDict removeObjectForKey:urlStr];
+            }];
+            
+        }];
+        
+        if (operation.operationCallbackArray == nil) operation.operationCallbackArray = [NSMutableArray array];
+        NSMutableDictionary *callbackDict = [NSMutableDictionary dictionary];
+        if (compelete) callbackDict[@"compeleteBlock"] = compelete;
+        [operation.operationCallbackArray addObject:callbackDict];
+        
+        [self.downloadQueue addOperation:operation];
+        self.operationDict[urlStr] = operation;
+    } else {
         NSLog(@"下载队列已经存在该 URL 请求：%@",url);
-        return;
+        
+        NSMutableDictionary *callbackDict = [NSMutableDictionary dictionary];
+        if (compelete) callbackDict[@"compeleteBlock"] = compelete;
+        [operation.operationCallbackArray addObject:callbackDict];
     }
-    
-    
-    __weak typeof(self) weakSelf = self;
-    operation = [NSBlockOperation blockOperationWithBlock:^{
-        __strong typeof(weakSelf)strongSelf = weakSelf;
-        [strongSelf realDownloadImageWithImageUrl:url compeleteBlock:compelete];
-        [strongSelf.operationDict removeObjectForKey:urlStr];
-    }];
-    
-    [self.downloadQueue addOperation:operation];
-    self.operationDict[urlStr] = operation;
 }
 
 #pragma mark - Private Methods
