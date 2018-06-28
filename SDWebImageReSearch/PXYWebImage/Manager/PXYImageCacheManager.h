@@ -165,8 +165,4 @@ typedef void (^PXYWebImageCalculateCompletionBlock)(NSUInteger fileCount, NSUInt
  */
 - (void)calculateDiskCacheSizeWithCompletionBlock:(PXYWebImageCalculateCompletionBlock)completionBlock;
 
-
-
-
-
 @end

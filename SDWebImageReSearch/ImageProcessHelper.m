@@ -187,6 +187,9 @@ NSArray* PropTree (NSDictionary *dict) {
 
 
 
+/**
+ 返回图片的属性
+ */
 NSDictionary* PXYFetchImagePropertiesWithImageName (NSString *fileName) {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@""];
     NSURL *url = [NSURL fileURLWithPath:filePath];
@@ -203,6 +206,59 @@ NSDictionary* PXYFetchImagePropertiesWithImageName (NSString *fileName) {
     
     
     return propertiesDict;
+}
+
+/**
+ 获取一张图片的 UTType
+ */
+NSString* PXYFecthImageUTType (UIImage *image) {
+    NSString *UTType = @"";
+    
+    if (image == nil) {
+        return UTType;
+    }
+    
+    CGImageRef imageRef = image.CGImage;
+    
+    CFStringRef UTTypeC = CGImageGetUTType(imageRef);
+    UTType = (__bridge_transfer NSString *) UTTypeC;
+    return UTType;
+}
+
+/**
+ 根据 ImageUrl 是否存在 @2x、@3x 来缩放图片
+ */
+UIImage* PXYFetchScaleImage (NSString *imageUrl, UIImage *image) {
+    if (image == nil) {
+        return image;
+    }
+    
+    if (image.images.count > 0) {
+        NSMutableArray<UIImage *> *scaledImageArray = [NSMutableArray array];
+        
+        for (UIImage *tempImage in image.images) {
+            UIImage *scaleImage = PXYFetchScaleImage(imageUrl, tempImage);
+            [scaledImageArray addObject:scaleImage];
+        }
+        
+        UIImage *animatedImage = [UIImage animatedImageWithImages:scaledImageArray duration:image.duration];
+        return animatedImage;
+        
+    } else {
+        CGFloat scale = 1.0;
+        NSRange range = [imageUrl rangeOfString:@"@2x."];
+        if (range.location != NSNotFound) {
+            scale = 2.0;
+        }
+        
+        range = [imageUrl rangeOfString:@"@3x."];
+        if (range.location != NSNotFound) {
+            scale = 3.0;
+        }
+        
+        UIImage *scaleImage = [UIImage imageWithCGImage:image.CGImage scale:scale orientation:image.imageOrientation];
+        return scaleImage;
+    }
 }
 
 #pragma mark - Private Methods

@@ -169,8 +169,6 @@
     return [self.diskCachePath stringByAppendingPathComponent:key];
 }
 
-
-
 #pragma mark - Lazzy load
 - (NSString *)diskCachePath {
     if (_diskCachePath == nil) {

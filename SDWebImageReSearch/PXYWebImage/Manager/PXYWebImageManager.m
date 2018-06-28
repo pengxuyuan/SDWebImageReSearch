@@ -30,7 +30,7 @@
 #pragma mark - Plublic Methods
 - (void)downloadImageWithImageUrl:(NSURL *)url compeleteBlock:(PXYWebImageDownloadCompleteBlock)compelete {
     /*
-     1.暂时根据 URL 去内存查找
+     1.根据 URL 去内存查找
      2.然后去磁盘查找
      3.都没有就去网络请求
      4.请求完之后写磁盘&内存
@@ -48,8 +48,6 @@
             }];
         }
     }];
-
-    
 }
 
 

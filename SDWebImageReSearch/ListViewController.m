@@ -82,7 +82,7 @@ static NSString *const kMultiImage6 = @"https://upload.jianshu.io/collections/im
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 1;
 }
 
 
@@ -96,7 +96,7 @@ static NSString *const kMultiImage6 = @"https://upload.jianshu.io/collections/im
     if (_tableView == nil) {
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-        _tableView.rowHeight = 80;
+        _tableView.rowHeight = 100;
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];

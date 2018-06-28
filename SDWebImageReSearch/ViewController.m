@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-//#import "ListViewController.h"
+#import "ListViewController.h"
 #import "PXYImageCacheManager.h"
 #import "NSMutableArray+PXYExtension.h" 
 #import "NSMutableDictionary+PXYExtension.h"
@@ -26,6 +26,8 @@
 
 #import "ImageResearchController.h"
 #import "SandboxViewController.h"
+#import "ImageTypeListController.h"
+
 
 /*
  1.NSData 几种换取方式有差别，有些把图片的信息删除了
@@ -140,8 +142,8 @@
 }
 
 - (IBAction)jumpTableViewPage:(id)sender {
-//    ListViewController *list = [ListViewController new];
-//    [self.navigationController pushViewController:list animated:YES];
+    ListViewController *list = [ListViewController new];
+    [self.navigationController pushViewController:list animated:YES];
 }
 
 - (IBAction)clearMemoryCache:(id)sender {
@@ -168,13 +170,19 @@
 }
 
 - (IBAction)imageResearch:(id)sender {
-    ImageResearchController *research = [ImageResearchController new];
-    [self.navigationController pushViewController:research animated:YES];
+//    ImageResearchController *research = [ImageResearchController new];
+//    [self.navigationController pushViewController:research animated:YES];
+    
+    ImageTypeListController *imageType = [ImageTypeListController new];
+    [self.navigationController pushViewController:imageType animated:YES];
 }
 
 - (IBAction)sandbox:(id)sender {
-    SandboxViewController *sandbox = [SandboxViewController new];
-    [self.navigationController pushViewController:sandbox animated:YES];
+//    SandboxViewController *sandbox = [SandboxViewController new];
+//    [self.navigationController pushViewController:sandbox animated:YES];
+    
+    ImageResearchController *research = [ImageResearchController new];
+    [self.navigationController pushViewController:research animated:YES];
 }
 
 

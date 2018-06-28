@@ -19,13 +19,50 @@
 //FOUNDATION_EXPORT NSArray* PropTree (NSDictionary *dict);
 
 
+/**
+ 将 CGImagePropertyOrientation 转换成 UIImageOrientation
+ */
 UIImageOrientation PXYImageOrientationFromExifOrientation (CGImagePropertyOrientation exifOrientation);
+
+/**
+ 利用 Core Foundation 框架绘制图片
+ */
 UIImage* PXYFetchRenderImageWithOriginImage (UIImage *image);
+
+/**
+ 生成一张缩略图
+ */
 UIImage* PXYFetchThumbnailImageFromFileName (NSString *fileName, int imageSize);
+
+/**
+ 解压本地图片
+ */
 UIImage* PXYCreateUIImageFromFileName (NSString *fileName);
+
+/**
+ 利用 ImageData 创建渐进式图片
+ */
 UIImage * PXYIncrementallyImageWithImageData (NSData *imageData, BOOL finalized);
+
+/**
+ 返回图片的属性
+ */
 NSDictionary* PXYFetchImagePropertiesWithImageName (NSString *fileName);
+
+/**
+ 属性树
+ */
 NSArray* PropTree (NSDictionary *dict);
+
+/**
+ 获取一张图片的 UTType
+ */
+NSString* PXYFecthImageUTType (UIImage *image);
+
+/**
+ 根据 ImageUrl 是否存在 @2x、@3x 来缩放图片
+ */
+UIImage* PXYFetchScaleImage (NSString *imageUrl, UIImage *image);
 
 
 
