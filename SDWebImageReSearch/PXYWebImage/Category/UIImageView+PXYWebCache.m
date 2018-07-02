@@ -21,25 +21,27 @@
 }
 
 - (void)setImageWithURL:(NSURL *)url
-               complete:(PXYWebImageDownloadCompleteBlock)completeBlock {
+               complete:(PXYWebImageDownloaderCompleteBlock)completeBlock {
     [self setImageWithURL:url placeholderImage:nil progress:nil complete:completeBlock];
 }
 
 - (void)setImageWithURL:(NSURL *)url
        placeholderImage:(UIImage *)placeholder
-               complete:(PXYWebImageDownloadCompleteBlock)completeBlock {
+               complete:(PXYWebImageDownloaderCompleteBlock)completeBlock {
     [self setImageWithURL:url placeholderImage:placeholder progress:nil complete:completeBlock];
 }
 
 - (void)setImageWithURL:(NSURL *)url
        placeholderImage:(UIImage *)placeholder
-               progress:(PXYWebImageDownloadProgressBlock)progressBlock
-               complete:(PXYWebImageDownloadCompleteBlock)completeBlock {
+               progress:(PXYWebImageDownloaderProgressBlock)progressBlock
+               complete:(PXYWebImageDownloaderCompleteBlock)completeBlock {
     if (placeholder) {
         self.image = placeholder;
     }
     
-    [[PXYWebImageManager shareInstance] downloadImageWithImageUrl:url compeleteBlock:^(NSData *imageData, UIImage *image, NSError *error) {
+    [[PXYWebImageManager shareInstance] downloadImageWithImageUrl:url options:PXYWebImageDownloaderLowPriority progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        
+    } compeleteBlock:^(NSData *imageData, UIImage *image, NSError *error) {
         if (image) {
             self.image = image;
         }
@@ -47,8 +49,8 @@
         if (completeBlock) {
             completeBlock(imageData,image,error);
         }
-        
     }];
+    
 }
 
 @end

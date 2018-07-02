@@ -28,7 +28,10 @@
 }
 
 #pragma mark - Plublic Methods
-- (void)downloadImageWithImageUrl:(NSURL *)url compeleteBlock:(PXYWebImageDownloadCompleteBlock)compelete {
+- (void)downloadImageWithImageUrl:(NSURL *)url
+                                                           options:(PXYWebImageDownloaderOptions)options
+                                                          progress:(PXYWebImageDownloaderProgressBlock)prpgressBlock
+                                                    compeleteBlock:(PXYWebImageDownloaderCompleteBlock)compeleteBlock {
     /*
      1.根据 URL 去内存查找
      2.然后去磁盘查找
@@ -36,20 +39,30 @@
      4.请求完之后写磁盘&内存
      */
     NSString *urlKey = [url absoluteString];
+    
     [[PXYImageCacheManager shareInstance] fetchCacheOperationForKey:urlKey completion:^(UIImage *image, NSData *imageData, PXYImageCacheType cacheType) {
         if (image) {
-            compelete(nil,image,nil);
-        } else {
-            [self.imageDownloader downloadImageWithImageUrl:url compeleteBlock:^(NSData *imageData, UIImage *image, NSError *error) {
-                compelete(imageData,image,error);
-                if (!error) {
-                    [[PXYImageCacheManager shareInstance] storeImage:image forKey:urlKey completion:nil];
-                }
-            }];
+            compeleteBlock(imageData, image, nil);
+            return;
         }
+        
+        
+        [self.imageDownloader downloadImageWithImageUrl:url options:PXYWebImageDownloaderLowPriority progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            prpgressBlock(receivedSize, expectedSize);
+        } compeleteBlock:^(NSData *imageData, UIImage *image, NSError *error) {
+            compeleteBlock(imageData, image, error);
+            if (!error) {
+                NSData *imageData1 = imageData;
+                UIImage *image1 = image;
+                [[PXYImageCacheManager shareInstance] fetchCacheOperationForKey:urlKey completion:^(UIImage *image, NSData *imageData, PXYImageCacheType cacheType) {
+                    if (image == nil) {
+                        [[PXYImageCacheManager shareInstance] storeImage:image1 imageData:imageData1 forKey:urlKey toDisk:YES completion:nil];
+                    }
+                }];
+            }
+        }];
     }];
 }
-
 
 #pragma mark - Lazzy load
 - (PXYWebImageDownloader *)imageDownloader {

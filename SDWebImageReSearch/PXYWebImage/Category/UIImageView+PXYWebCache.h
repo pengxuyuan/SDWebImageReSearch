@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^PXYWebImageDownloadCompleteBlock)(NSData *imageData,UIImage *image,NSError *error);
-typedef void (^PXYWebImageDownloadProgressBlock)(NSInteger receivedSize, NSInteger expectedSize, NSURL *targetURL);
+typedef void (^PXYWebImageDownloaderProgressBlock) (NSInteger receivedSize, NSInteger expectedSize);
+typedef void (^PXYWebImageDownloaderCompleteBlock) (NSData *imageData, UIImage *image, NSError *error);
 
 
 /**
@@ -23,16 +23,16 @@ typedef void (^PXYWebImageDownloadProgressBlock)(NSInteger receivedSize, NSInteg
        placeholderImage:(UIImage *)placeholder;
 
 - (void)setImageWithURL:(NSURL *)url
-               complete:(PXYWebImageDownloadCompleteBlock)completeBlock;
+               complete:(PXYWebImageDownloaderCompleteBlock)completeBlock;
 
 - (void)setImageWithURL:(NSURL *)url
        placeholderImage:(UIImage *)placeholder
-               complete:(PXYWebImageDownloadCompleteBlock)completeBlock;
+               complete:(PXYWebImageDownloaderCompleteBlock)completeBlock;
 
 - (void)setImageWithURL:(NSURL *)url
        placeholderImage:(UIImage *)placeholder
-               progress:(PXYWebImageDownloadProgressBlock)progressBlock
-               complete:(PXYWebImageDownloadCompleteBlock)completeBlock;
+               progress:(PXYWebImageDownloaderProgressBlock)progressBlock
+               complete:(PXYWebImageDownloaderCompleteBlock)completeBlock;
 
 
 @end

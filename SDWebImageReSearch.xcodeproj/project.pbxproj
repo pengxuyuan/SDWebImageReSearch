@@ -105,6 +105,7 @@
 		E609742D207DB386003521BA /* timg1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = timg1.gif; sourceTree = "<group>"; };
 		E614894920E28319008EE4EB /* NSData+PXYImageContentType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+PXYImageContentType.h"; sourceTree = "<group>"; };
 		E614894A20E28319008EE4EB /* NSData+PXYImageContentType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+PXYImageContentType.m"; sourceTree = "<group>"; };
+		E61616AA20E54E5900722670 /* PXYWebImageOperationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXYWebImageOperationProtocol.h; sourceTree = "<group>"; };
 		E617575020859D7E00774B59 /* NSCache+PXYExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCache+PXYExtension.h"; sourceTree = "<group>"; };
 		E617575120859D7E00774B59 /* NSCache+PXYExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSCache+PXYExtension.m"; sourceTree = "<group>"; };
 		E61757532085F6A800774B59 /* LRUImplement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRUImplement.h; sourceTree = "<group>"; };
@@ -432,6 +433,7 @@
 			children = (
 				E64CCEF3207F9A9E00392B0A /* PXYWebImageDownloader.h */,
 				E64CCEF4207F9A9E00392B0A /* PXYWebImageDownloader.m */,
+				E61616AA20E54E5900722670 /* PXYWebImageOperationProtocol.h */,
 			);
 			path = Downloader;
 			sourceTree = "<group>";

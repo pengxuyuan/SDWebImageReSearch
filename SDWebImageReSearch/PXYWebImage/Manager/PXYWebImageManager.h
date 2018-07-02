@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PXYWebImageDownloader.h"
 
+
 /**
  WebImage 管理类，封装下载和缓存逻辑
  */
@@ -18,6 +19,9 @@
 
 @property (nonatomic, strong, readonly) PXYWebImageDownloader *imageDownloader;
 
-- (void)downloadImageWithImageUrl:(NSURL *)url compeleteBlock:(PXYWebImageDownloadCompleteBlock)compelete;
+- (void)downloadImageWithImageUrl:(NSURL *)url
+                                                           options:(PXYWebImageDownloaderOptions)options
+                                                          progress:(PXYWebImageDownloaderProgressBlock)prpgressBlock
+                                                    compeleteBlock:(PXYWebImageDownloaderCompleteBlock)compeleteBlock;
 
 @end
