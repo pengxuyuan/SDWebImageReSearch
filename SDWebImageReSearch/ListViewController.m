@@ -82,7 +82,7 @@ static NSString *const kMultiImage6 = @"https://upload.jianshu.io/collections/im
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+//    return 2;
     return _modelArray.count;
 }
 

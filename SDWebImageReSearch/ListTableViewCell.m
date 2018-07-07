@@ -44,8 +44,8 @@
     _model = model;
 //    model.imageUrl1 = nil;
     [self.imageView1 setImageWithURL:[NSURL URLWithString:model.imageUrl1] placeholderImage:[UIImage imageNamed:@"HomeActivity1"]];
-//    [self.imageView2 setImageWithURL:[NSURL URLWithString:model.imageUrl2] placeholderImage:[UIImage imageNamed:@"HomeActivity2"]];
-//    [self.imageView3 setImageWithURL:[NSURL URLWithString:model.imageUrl3] placeholderImage:[UIImage imageNamed:@"HomeActivity3"]];
+    [self.imageView2 setImageWithURL:[NSURL URLWithString:model.imageUrl2] placeholderImage:[UIImage imageNamed:@"HomeActivity2"]];
+    [self.imageView3 setImageWithURL:[NSURL URLWithString:model.imageUrl3] placeholderImage:[UIImage imageNamed:@"HomeActivity3"]];
 }
 
 @end

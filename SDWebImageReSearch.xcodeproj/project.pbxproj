@@ -81,7 +81,6 @@
 		E64CCF102080AFE400392B0A /* mew_progressive.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E64CCF0A2080AFE300392B0A /* mew_progressive.jpg */; };
 		E64CCF112080AFE400392B0A /* mew_baseline.png in Resources */ = {isa = PBXBuildFile; fileRef = E64CCF0B2080AFE400392B0A /* mew_baseline.png */; };
 		E64CCF142081EFED00392B0A /* ImagePropertiesListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64CCF132081EFED00392B0A /* ImagePropertiesListController.m */; };
-		E64CE6922071FB050074EFB5 /* CodeSnippetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64CE6912071FB050074EFB5 /* CodeSnippetsViewController.m */; };
 		E652B2ED2087654F00882B94 /* LRUDoubleLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = E652B2EC2087654F00882B94 /* LRUDoubleLinkedList.m */; };
 		E656F46B205FF1EF00216A23 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F46A205FF1EF00216A23 /* ListViewController.m */; };
 		E656F46F205FF45B00216A23 /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F46D205FF45B00216A23 /* ListTableViewCell.m */; };
@@ -198,8 +197,6 @@
 		E64CCF0B2080AFE400392B0A /* mew_baseline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mew_baseline.png; sourceTree = "<group>"; };
 		E64CCF122081EFED00392B0A /* ImagePropertiesListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImagePropertiesListController.h; sourceTree = "<group>"; };
 		E64CCF132081EFED00392B0A /* ImagePropertiesListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImagePropertiesListController.m; sourceTree = "<group>"; };
-		E64CE6902071FB050074EFB5 /* CodeSnippetsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeSnippetsViewController.h; sourceTree = "<group>"; };
-		E64CE6912071FB050074EFB5 /* CodeSnippetsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodeSnippetsViewController.m; sourceTree = "<group>"; };
 		E652B2EB2087654F00882B94 /* LRUDoubleLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRUDoubleLinkedList.h; sourceTree = "<group>"; };
 		E652B2EC2087654F00882B94 /* LRUDoubleLinkedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRUDoubleLinkedList.m; sourceTree = "<group>"; };
 		E656F469205FF1EF00216A23 /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
@@ -295,8 +292,6 @@
 				E652B2EC2087654F00882B94 /* LRUDoubleLinkedList.m */,
 				E61757562086086200774B59 /* LRUViewController.h */,
 				E61757572086086200774B59 /* LRUViewController.m */,
-				E64CE6902071FB050074EFB5 /* CodeSnippetsViewController.h */,
-				E64CE6912071FB050074EFB5 /* CodeSnippetsViewController.m */,
 				E64CCEFD20805A7100392B0A /* ImageRelateViewController.h */,
 				E64CCEFE20805A7100392B0A /* ImageRelateViewController.m */,
 				E64CCEFF20805A7100392B0A /* ImageRelateViewController.xib */,
@@ -574,7 +569,6 @@
 				E64CCEDF207F346600392B0A /* GenericsModel.m in Sources */,
 				E64CCEF9207F9A9E00392B0A /* NSMutableArray+PXYExtension.m in Sources */,
 				E656F46B205FF1EF00216A23 /* ListViewController.m in Sources */,
-				E64CE6922071FB050074EFB5 /* CodeSnippetsViewController.m in Sources */,
 				E631AE1B20443E0500E586A1 /* ViewController.m in Sources */,
 				E64CCF0420807DE100392B0A /* ImageProcessHelper.m in Sources */,
 				E64CCEFA207F9A9E00392B0A /* PXYImageDiskCache.m in Sources */,
