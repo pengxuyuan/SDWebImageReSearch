@@ -46,6 +46,7 @@
 		E63286B8205A0C76003BD43F /* PXYSingleClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E63286B7205A0C76003BD43F /* PXYSingleClassTest.m */; };
 		E63286C4205B9183003BD43F /* one.png in Resources */ = {isa = PBXBuildFile; fileRef = E63286C3205B9183003BD43F /* one.png */; };
 		E63286C7205BC28C003BD43F /* PXYMD5DigestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E63286C6205BC28C003BD43F /* PXYMD5DigestHelper.m */; };
+		E6379A5520EBBC6E000DE200 /* PXYWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E619011520EA6C7800432EB9 /* PXYWebImageDownloaderOperation.m */; };
 		E63B3BFC20D4F8C00094554A /* im_but_takePic.png in Resources */ = {isa = PBXBuildFile; fileRef = E63B3BF220D4F8C00094554A /* im_but_takePic.png */; };
 		E63B3BFD20D4F8C00094554A /* im_but_video.png in Resources */ = {isa = PBXBuildFile; fileRef = E63B3BF320D4F8C00094554A /* im_but_video.png */; };
 		E63B3BFF20D4F8C00094554A /* im_but_location.png in Resources */ = {isa = PBXBuildFile; fileRef = E63B3BF520D4F8C00094554A /* im_but_location.png */; };
@@ -112,6 +113,8 @@
 		E61757542085F6A800774B59 /* LRUImplement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRUImplement.m; sourceTree = "<group>"; };
 		E61757562086086200774B59 /* LRUViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRUViewController.h; sourceTree = "<group>"; };
 		E61757572086086200774B59 /* LRUViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LRUViewController.m; sourceTree = "<group>"; };
+		E619011420EA6C7800432EB9 /* PXYWebImageDownloaderOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXYWebImageDownloaderOperation.h; sourceTree = "<group>"; };
+		E619011520EA6C7800432EB9 /* PXYWebImageDownloaderOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXYWebImageDownloaderOperation.m; sourceTree = "<group>"; };
 		E61C36AF20C7814000579D58 /* check_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_green.png; sourceTree = "<group>"; };
 		E620815B20DB535200877552 /* ImageTypeListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTypeListController.h; sourceTree = "<group>"; };
 		E620815C20DB535200877552 /* ImageTypeListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTypeListController.m; sourceTree = "<group>"; };
@@ -433,6 +436,8 @@
 			children = (
 				E64CCEF3207F9A9E00392B0A /* PXYWebImageDownloader.h */,
 				E64CCEF4207F9A9E00392B0A /* PXYWebImageDownloader.m */,
+				E619011420EA6C7800432EB9 /* PXYWebImageDownloaderOperation.h */,
+				E619011520EA6C7800432EB9 /* PXYWebImageDownloaderOperation.m */,
 				E61616AA20E54E5900722670 /* PXYWebImageOperationProtocol.h */,
 			);
 			path = Downloader;
@@ -565,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6379A5520EBBC6E000DE200 /* PXYWebImageDownloaderOperation.m in Sources */,
 				E64CCEDF207F346600392B0A /* GenericsModel.m in Sources */,
 				E64CCEF9207F9A9E00392B0A /* NSMutableArray+PXYExtension.m in Sources */,
 				E656F46B205FF1EF00216A23 /* ListViewController.m in Sources */,
@@ -736,6 +742,7 @@
 				INFOPLIST_FILE = SDWebImageReSearch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pengxuyuan.SDWebImageReSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -751,6 +758,7 @@
 				INFOPLIST_FILE = SDWebImageReSearch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pengxuyuan.SDWebImageReSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

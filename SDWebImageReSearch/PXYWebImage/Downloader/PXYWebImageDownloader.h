@@ -90,7 +90,7 @@ typedef void (^PXYWebImageDownloaderCompleteBlock) (NSData *imageData, UIImage *
 
 - (nullable PXYWebImageDownloaderToken *)downloadImageWithImageUrl:(NSURL *)url
                                                            options:(PXYWebImageDownloaderOptions)options
-                                                          progress:(PXYWebImageDownloaderProgressBlock)prpgressBlock
+                                                          progress:(PXYWebImageDownloaderProgressBlock)progressBlock
                                                     compeleteBlock:(PXYWebImageDownloaderCompleteBlock)compeleteBlock;
 
 /**

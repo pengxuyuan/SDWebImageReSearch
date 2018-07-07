@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSOperation (PXYWebImageExtension)
-
+/* !!!: 这里已经不需要扩展了，自定义 Operation 直接声明属性就可以了 */
 @property (nonatomic, strong) NSMutableArray <NSMutableDictionary *>*operationCallbackArray;
 
 @end

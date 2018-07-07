@@ -7,7 +7,7 @@
 //
 
 #import "PXYWebImageDownloader.h"
-#import "NSOperation+PXYWebImageExtension.h"
+#import "PXYWebImageDownloaderOperation.h"
 
 @interface PXYWebImageDownloaderToken ()
 
@@ -48,7 +48,7 @@ NSURLSessionDownloadDelegate>
  保存当前队列里面存在的操作，可以确保相同的 URL 不会再次创建操作放入队列中
  防止多次请求
  */
-@property (nonatomic, strong) NSMutableDictionary <NSString *,NSBlockOperation *>*operationDict;
+@property (nonatomic, strong) NSMutableDictionary <NSString *,PXYWebImageDownloaderOperation *>*operationDict;
 
 
 @end
@@ -137,38 +137,30 @@ NSURLSessionDownloadDelegate>
 // 创建一个真正的请求
 - (nullable PXYWebImageDownloaderToken *)downloadImageWithImageUrl:(NSURL *)url
                                                            options:(PXYWebImageDownloaderOptions)options
-                                                          progress:(PXYWebImageDownloaderProgressBlock)prpgressBlock
+                                                          progress:(PXYWebImageDownloaderProgressBlock)progressBlock
                                                     compeleteBlock:(PXYWebImageDownloaderCompleteBlock)compeleteBlock {
     
     NSString *urlStr = [url absoluteString];
     
-    NSBlockOperation *operation = self.operationDict[urlStr];
+    PXYWebImageDownloaderOperation *operation = self.operationDict[urlStr];
     if (operation == nil) {
         __weak typeof(self) weakSelf = self;
-        operation = [NSBlockOperation blockOperationWithBlock:^{
-            __strong typeof(weakSelf)strongSelf = weakSelf;
-            [strongSelf realDownloadImageWithImageUrl:url compeleteBlock:^(NSData *imageData, UIImage *image, NSError *error) {
+        
+        operation = [[PXYWebImageDownloaderOperation alloc] initWithImageURL:url inSession:self.session options:options];
+        operation.completionBlock = ^{
+            [weakSelf.operationDict removeObjectForKey:urlStr];
+        };
 
-            }];
-            
-        }];
-        
-        if (operation.operationCallbackArray == nil) operation.operationCallbackArray = [NSMutableArray array];
-        NSMutableDictionary *callbackDict = [NSMutableDictionary dictionary];
-        if (compeleteBlock) callbackDict[@"compeleteBlock"] = compeleteBlock;
-        [operation.operationCallbackArray addObject:callbackDict];
-        
         [self.downloadQueue addOperation:operation];
         self.operationDict[urlStr] = operation;
-    } else {
-        NSLog(@"下载队列已经存在该 URL 请求：%@",url);
-        
-        NSMutableDictionary *callbackDict = [NSMutableDictionary dictionary];
-        if (compeleteBlock) callbackDict[@"compeleteBlock"] = compeleteBlock;
-        [operation.operationCallbackArray addObject:callbackDict];
     }
     
-    return nil;
+    [operation addHandlesForProgress:progressBlock complete:compeleteBlock];
+    PXYWebImageDownloaderToken *token = [PXYWebImageDownloaderToken new];
+    token.url = url;
+    token.downloadOperation = operation;
+    
+    return token;
 }
 
 
@@ -176,73 +168,116 @@ NSURLSessionDownloadDelegate>
 - (void)realDownloadImageWithImageUrl:(NSURL *)url compeleteBlock:(PXYWebImageDownloaderCompleteBlock)compeleteBlock {
     NSLog(@"开始下载图片：%@",url);
     
-    NSURLSessionDownloadTask *downloadTask = [self.session downloadTaskWithURL:url];
-    [downloadTask resume];
+//    NSURLSessionDownloadTask *downloadTask = [self.session downloadTaskWithURL:url];
+//    [downloadTask resume];
 }
 
 #pragma mark - NSURLSessionDelegate
 
 #pragma mark - NSURLSessionDataDelegate
+//收到响应
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+didReceiveResponse:(NSURLResponse *)response
+ completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
+    NSLog(@"%s",__func__);
+    
+    PXYWebImageDownloaderOperation *operation = [self p_fetchOperationWithTask:dataTask];
+    if ([operation respondsToSelector:@selector(URLSession:dataTask:didReceiveResponse:completionHandler:)]) {
+        [operation URLSession:session dataTask:dataTask didReceiveResponse:response completionHandler:completionHandler];
+    } else {
+        completionHandler(NSURLSessionResponseAllow);
+    }
+}
+
+// 接收到数据
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+    NSLog(@"%s",__func__);
+    
+    PXYWebImageDownloaderOperation *operation = [self p_fetchOperationWithTask:dataTask];
+    if ([operation respondsToSelector:@selector(URLSession:dataTask:didReceiveData:)]) {
+        [operation URLSession:session dataTask:dataTask didReceiveData:data];
+    }
+    
+}
 
 #pragma mark - NSURLSessionTaskDelegate
 // 收到错误
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 didCompleteWithError:(nullable NSError *)error {
     NSLog(@"%s",__func__);
+    
+    PXYWebImageDownloaderOperation *operation = [self p_fetchOperationWithTask:task];
+    if ([operation respondsToSelector:@selector(URLSession:task:didCompleteWithError:)]) {
+        [operation URLSession:session task:task didCompleteWithError:error];
+    }
+    
 }
 
 #pragma mark - NSURLSessionStreamDelegate
 
 #pragma mark - NSURLSessionDownloadDelegate
-// downloadTask 完成
-- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
-didFinishDownloadingToURL:(NSURL *)location {
-    NSLog(@"%s",__func__);
-    
-    NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingString:downloadTask.response.suggestedFilename];
-    NSURL *fileUrl = [NSURL fileURLWithPath:fullPath];
-
-    [[NSFileManager defaultManager] moveItemAtURL:location toURL:fileUrl error:nil];
-
-    NSData *fileData = [NSData dataWithContentsOfURL:fileUrl];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSString *tempImageUrl = [downloadTask.originalRequest.URL absoluteString];
-        UIImage *image = [UIImage imageWithData:fileData];
-        [self p_callCompletionBlockWithImageData:fileData image:image error:downloadTask.error tempImageUrl:tempImageUrl];
-    });
-}
-
-
-// downloadTask 下载进度
-- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
-      didWriteData:(int64_t)bytesWritten
- totalBytesWritten:(int64_t)totalBytesWritten
-totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
-    NSLog(@"%s",__func__);
-}
-
-// 下载恢复
-- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
- didResumeAtOffset:(int64_t)fileOffset
-expectedTotalBytes:(int64_t)expectedTotalBytes {
-    NSLog(@"%s",__func__);
-}
+//// downloadTask 完成
+//- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+//didFinishDownloadingToURL:(NSURL *)location {
+//    NSLog(@"%s",__func__);
+//    
+//    NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingString:downloadTask.response.suggestedFilename];
+//    NSURL *fileUrl = [NSURL fileURLWithPath:fullPath];
+//
+//    [[NSFileManager defaultManager] moveItemAtURL:location toURL:fileUrl error:nil];
+//
+//    NSData *fileData = [NSData dataWithContentsOfURL:fileUrl];
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        NSString *tempImageUrl = [downloadTask.originalRequest.URL absoluteString];
+//        UIImage *image = [UIImage imageWithData:fileData];
+//        [self p_callCompletionBlockWithImageData:fileData image:image error:downloadTask.error tempImageUrl:tempImageUrl];
+//    });
+//}
+//
+//
+//// downloadTask 下载进度
+//- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+//      didWriteData:(int64_t)bytesWritten
+// totalBytesWritten:(int64_t)totalBytesWritten
+//totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+//    NSLog(@"%s",__func__);
+//}
+//
+//// 下载恢复
+//- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+// didResumeAtOffset:(int64_t)fileOffset
+//expectedTotalBytes:(int64_t)expectedTotalBytes {
+//    NSLog(@"%s",__func__);
+//}
 
 
 #pragma mark - Private Methods
 - (void)p_callCompletionBlockWithImageData:(NSData *)imageData image:(UIImage *)image error:(NSError *)error tempImageUrl:(NSString *)tempImageUrl {
     NSLog(@"下载成功图片：%@",tempImageUrl);
     
-    NSBlockOperation *tempOperation = self.operationDict[tempImageUrl];
+//    PXYWebImageDownloaderOperation *tempOperation = self.operationDict[tempImageUrl];
+//
+//    if (tempOperation.operationCallbackArray.count > 0) {
+//        for (NSMutableDictionary *callbackDict in tempOperation.operationCallbackArray) {
+//            PXYWebImageDownloaderCompleteBlock completeBlock = callbackDict[@"compeleteBlock"];
+//            completeBlock(imageData, image, error);
+//        }
+//    }
     
-    if (tempOperation.operationCallbackArray.count > 0) {
-        for (NSMutableDictionary *callbackDict in tempOperation.operationCallbackArray) {
-            PXYWebImageDownloaderCompleteBlock completeBlock = callbackDict[@"compeleteBlock"];
-            completeBlock(imageData, image, error);
+}
+
+- (PXYWebImageDownloaderOperation *)p_fetchOperationWithTask:(NSURLSessionTask *)task {
+    PXYWebImageDownloaderOperation *operation = nil;
+    for (PXYWebImageDownloaderOperation *operationItem in self.downloadQueue.operations) {
+        /* !!!: 这里为什么只加了一次 Queue 却有两个 */
+        if ([operationItem isKindOfClass:[PXYWebImageDownloaderOperation class]]) {
+            if (operationItem.dataTask.taskIdentifier == task.taskIdentifier) {
+                operation = operationItem;
+            }
         }
     }
-    
-    [self.operationDict removeObjectForKey:tempImageUrl];
+    return operation;
 }
 
 
@@ -254,7 +289,7 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
     return _downloadQueue;
 }
 
-- (NSMutableDictionary<NSString *,NSBlockOperation *> *)operationDict {
+- (NSMutableDictionary<NSString *,PXYWebImageDownloaderOperation *> *)operationDict {
     if (_operationDict == nil) {
         _operationDict = [NSMutableDictionary dictionary];
     }
